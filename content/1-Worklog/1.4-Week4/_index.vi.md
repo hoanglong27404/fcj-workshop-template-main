@@ -6,40 +6,35 @@ chapter: false
 pre: " <b> 1.4. </b> "
 ---
 
-### Mục tiêu tuần 4: Tối ưu hóa hệ thống (Optimizing the System)
+### Mục tiêu Tuần 4: Tối ưu hóa Hệ thống
 
-Nắm vững 5 trụ cột của AWS Well-Architected Framework:
+Tuần này tập trung vào việc áp dụng AWS Well-Architected Framework để tối ưu hóa toàn diện hệ thống trên 5 trụ cột chính:
+-   **Vận hành Xuất sắc (Operational Excellence)**: Tự động hóa vận hành, giám sát chủ động và xây dựng quy trình xử lý sự cố hiệu quả.
+-   **Bảo mật (Security)**: Xây dựng kiến trúc bảo mật theo nguyên tắc zero-trust, đảm bảo tuân thủ (compliance) và bảo vệ hệ thống trước các mối đe dọa.
+-   **Độ tin cậy (Reliability)**: Đảm bảo tính sẵn sàng cao (high availability), xây dựng kế hoạch khôi phục sau thảm họa (disaster recovery) và tăng cường khả năng chịu lỗi.
+-   **Hiệu năng (Performance)**: Nâng cao hiệu năng thông qua co giãn tự động, kỹ thuật caching, và tối ưu hóa tài nguyên trên các dịch vụ container và lưu trữ.
+-   **Tối ưu hóa Chi phí (Cost Optimization)**: Lựa chọn đúng kích thước tài nguyên (right-sizing), sử dụng các gói tiết kiệm và áp dụng các công cụ phân tích chi tiêu chi tiết.
 
-- **Operational Excellence**: Tự động hóa, giám sát và xử lý sự cố
-- **Security**: Kiến trúc zero-trust, tuân thủ và bảo vệ khỏi mối đe dọa
-- **Reliability**: Tính khả dụng cao, khôi phục thảm họa và khả năng chịu lỗi
-- **Performance**: Tự động mở rộng, caching và tối ưu hóa tài nguyên
-- **Cost Optimization**: Right-sizing, reserved capacity và phân tích chi phí
+---
+### Tổng quan công việc
 
-### Các công việc cần triển khai trong tuần này
+| Ngày | Nhiệm vụ                                                                                                                                                                                                                                                                                             | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo                                                                                                                              |
+|:----:| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |:------------:|:---------------:| ----------------------------------------------------------------------------------------------------------------------------------------------- |
+|  2   | **Vận hành Xuất sắc**:<br>- Tự động hóa tác vụ (tắt máy chủ, gửi thông báo Slack) bằng AWS Lambda<br>- Xây dựng hệ thống giám sát với CloudWatch và Grafana<br>- Quản lý tài nguyên và phân quyền truy cập EC2 dựa trên Tags<br>- Tự động hóa quản lý và vận hành với AWS Systems Manager<br>- Triển khai hạ tầng dưới dạng mã (IaC) với AWS CloudFormation | 29/09/2025   | 29/09/2025      | <https://cloudjourney.awsstudygroup.com/><br><https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> |
+|  3   | **Bảo mật**:<br>- Thiết lập đăng nhập một lần (SSO) cho toàn tổ chức<br>- Giới hạn quyền hạn tối đa của người dùng với IAM Permission Boundary<br>- Kiểm tra các tiêu chuẩn bảo mật với AWS Security Hub<br>- Bảo vệ ứng dụng web và API bằng AWS WAF<br>- Quản lý khóa mã hóa tập trung với AWS KMS | 30/09/2025   | 30/09/2025      | <https://cloudjourney.awsstudygroup.com/><br><https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> |
+|  4   | **Độ tin cậy**:<br>- Xây dựng chiến lược sao lưu và phục hồi hệ thống với AWS Backup<br>- Kết nối trực tiếp giữa các VPC bằng VPC Peering<br>- Quản lý kết nối mạng tập trung qua AWS Transit Gateway để tăng tính ổn định                                                                   | 01/10/2025   | 01/10/2025      | <https://cloudjourney.awsstudygroup.com/><br><https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> |
+|  5   | **Hiệu năng**:<br>- Container hóa ứng dụng với Docker và triển khai trên Amazon ECS<br>- Xây dựng quy trình CI/CD tự động với AWS CodePipeline<br>- Lưu trữ file không giới hạn với AWS File Storage Gateway<br>- Triển khai hệ thống file chia sẻ cho Windows với Amazon FSx<br>- Xây dựng Data Lake và thiết kế kiến trúc nâng cao với DynamoDB | 02/10/2025   | 02/10/2025      | <https://cloudjourney.awsstudygroup.com/><br><https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> |
+|  6   | **Tối ưu hóa Chi phí**:<br>- Tối ưu chi phí qua Savings Plans và Reserved Instances<br>- Lựa chọn cấu hình EC2 phù hợp (Right-Sizing)<br>- Trực quan hóa chi phí sử dụng dịch vụ AWS<br>- Phân tích chi phí chuyên sâu bằng AWS Glue và Amazon Athena<br>- Tổng kết và củng cố 5 trụ cột của Well-Architected Framework | 03/10/2025   | 03/10/2025      | <https://cloudjourney.awsstudygroup.com/><br><https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> |
 
-<!-- markdownlint-disable MD033 -->
+---
+### Kết quả đạt được
 
-| Thứ | Công việc                                                                                                                                                                                                                                                                                                                                                                                     | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                                                                                                                    |
-| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| 2   | **Operational Excellence**:<br>- Tự động tắt server và gửi thông báo Slack với AWS Lambda<br>+ Tạo hệ thống giám sát với Amazon CloudWatch và Grafana<br>+ Quản lý tài nguyên theo nhóm với Tag và Resource Groups<br>- Quản lý truy cập EC2 với Tag thông qua IAM<br>+ Tự động hóa quản lý dịch vụ với AWS Systems Manager<br>- Khởi tạo Infrastructure as Code với AWS CloudFormation       | 29/09/2025   | 29/09/2025      | <https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i>                                             |
-| 3   | **Security**:<br>- Thiết lập Single Sign-On (Amazon SSO) cho tổ chức<br>+ Giới hạn quyền người dùng với IAM Permission Boundary<br>+ Giới hạn Role Transfer bằng Condition<br>- Kiểm tra security benchmarks với AWS Security Hub<br>+ Bảo vệ ứng dụng và API với Web Application Firewall (AWS WAF)<br>- Quản lý khóa với Key Management Service (AWS KMS)                                   | 30/09/2025   | 30/09/2025      | <https://cloudjourney.awsstudygroup.com><br><https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> |
-| 4   | **Reliability**:<br>- Triển khai kế hoạch sao lưu hệ thống với AWS Backup<br>+ Kết nối Virtual Private Clouds (VPCs) với VPC Peering<br>- Quản lý kết nối tập trung với AWS Transit Gateway                                                                                                                                                                                                   | 01/10/2025   | 01/10/2025      | <https://cloudjourney.awsstudygroup.com><br><https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> |
-| 5   | **Performance**:<br>- Triển khai ứng dụng với Docker<br>+ Triển khai ứng dụng lên Amazon Elastic Container Service (Amazon ECS)<br>+ Triển khai ứng dụng với AWS CodePipeline<br>- Lưu trữ dữ liệu không giới hạn trên AWS với File Storage Gateway<br>+ Triển khai Universal Repository cho Windows sử dụng FSx<br>- Xây dựng Data Lake trên AWS<br>+ Kiến trúc nâng cao với Amazon DynamoDB | 02/10/2025   | 02/10/2025      | <https://cloudjourney.awsstudygroup.com><br><https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> |
-| 6   | **Cost Optimization**:<br>- Tối ưu chi phí với Savings Plans, Reserved Instance, Reserved DB Instance<br>+ Chọn right-sizing phù hợp cho Amazon EC2 Resource Optimization<br>+ Trực quan hóa chi phí sử dụng trên AWS<br>- Phân tích chi phí sử dụng nâng cao với AWS Glue và Amazon Athena<br>- Ôn tập tổng hợp 5 trụ cột Well-Architected Framework                                         | 03/10/2025   | 03/10/2025      | <https://cloudjourney.awsstudygroup.com><br><https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> |
-| 4   | **Reliability**:<br>- Triển khai kế hoạch sao lưu hệ thống với AWS Backup<br>+ Kết nối Virtual Private Clouds (VPCs) với VPC Peering<br>- Quản lý kết nối tập trung với AWS Transit Gateway                                                                                                                                                                                                   | 01/10/2025   | 01/10/2025      | <https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i>                                             |
-| 5   | **Performance**:<br>- Triển khai ứng dụng với Docker<br>+ Triển khai ứng dụng lên Amazon Elastic Container Service (Amazon ECS)<br>+ Triển khai ứng dụng với AWS CodePipeline<br>- Lưu trữ dữ liệu không giới hạn trên AWS với File Storage Gateway<br>+ Triển khai Universal Repository cho Windows sử dụng FSx<br>- Xây dựng Data Lake trên AWS<br>+ Kiến trúc nâng cao với Amazon DynamoDB | 02/10/2025   | 02/10/2025      | <https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i>                                             |
-| 6   | **Cost Optimization**:<br>- Tối ưu chi phí với Savings Plans, Reserved Instance, Reserved DB Instance<br>+ Chọn right-sizing phù hợp cho Amazon EC2 Resource Optimization<br>+ Trực quan hóa chi phí sử dụng trên AWS<br>- Phân tích chi phí sử dụng nâng cao với AWS Glue và Amazon Athena<br>- Ôn tập tổng hợp 5 trụ cột Well-Architected Framework                                         | 03/10/2025   | 03/10/2025      | <https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i>                                             |
+#### Những gì đã hoàn thành
 
-<!-- markdownlint-enable MD033 -->
+-   **Tự động hóa vận hành và giám sát**: Hoàn thiện quy trình tự động tắt máy chủ, xây dựng dashboard giám sát hiệu năng với CloudWatch/Grafana, và quản lý tài nguyên tập trung bằng Tags.
+-   **Tăng cường bảo mật toàn diện**: Thiết lập thành công SSO, áp dụng IAM Permission Boundary để kiểm soát quyền chặt chẽ, triển khai tường lửa ứng dụng web (WAF) và quản lý khóa mã hóa với KMS.
+-   **Nâng cao độ tin cậy của hệ thống**: Xây dựng kế hoạch backup tự động với AWS Backup, cấu hình VPC Peering và Transit Gateway để đảm bảo kết nối mạng luôn ổn định và sẵn sàng.
+-   **Tối ưu hóa hiệu năng ứng dụng**: Triển khai ứng dụng container hóa qua Docker/ECS, tự động hóa quy trình CI/CD với CodePipeline, và thiết kế kiến trúc dữ liệu hiệu năng cao với DynamoDB và Data Lake.
+-   **Quản lý và tối ưu chi phí hiệu quả**: Áp dụng thành công Savings Plans/Reserved Instances, thực hiện right-sizing cho EC2, và sử dụng Glue/Athena để phân tích chi phí ở mức độ sâu.
 
-### Kết quả đạt được tuần 4
-
-#### Đã làm được gì
-
-- **Operational Excellence**: Tự động hóa tắt server, giám sát hệ thống với CloudWatch/Grafana, quản lý tài nguyên với Tags
-- **Security**: Thiết lập SSO, IAM Permission Boundary, AWS WAF, KMS key management, Security Hub benchmarks
-- **Reliability**: Triển khai AWS Backup, VPC Peering, Transit Gateway cho hệ thống đáng tin cậy
-- **Performance**: Docker/ECS deployment, CodePipeline automation, File Storage Gateway, FSx, Data Lake, DynamoDB architecture
-- **Cost Optimization**: Savings Plans, Reserved Instances, right-sizing, cost visualization, advanced analytics với Glue/Athena
-- Thực hành tối ưu hóa toàn diện: từ vận hành, bảo mật đến hiệu suất và chi phí
+***

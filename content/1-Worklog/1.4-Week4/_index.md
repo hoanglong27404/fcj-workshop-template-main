@@ -6,37 +6,33 @@ chapter: false
 pre: " <b> 1.4. </b> "
 ---
 
-### Week 4 Objectives: Optimizing the System
+### Week 4 Objectives: System Optimization
 
-Master the 5 pillars of AWS Well-Architected Framework:
+This week was centered on applying the AWS Well-Architected Framework to comprehensively optimize the system across its five core pillars:
+-   **Operational Excellence**: Automating operations, implementing proactive monitoring, and establishing efficient incident response procedures.
+-   **Security**: Building a security architecture based on zero-trust principles, ensuring compliance, and protecting the system against threats.
+-   **Reliability**: Ensuring high availability, developing a robust disaster recovery plan, and enhancing fault tolerance.
+-   **Performance Efficiency**: Improving performance through auto-scaling, caching techniques, and optimizing resources across container and storage services.
+-   **Cost Optimization**: Right-sizing resources, utilizing savings plans, and leveraging detailed spending analysis tools.
 
-- **Operational Excellence**: Automation, monitoring, and incident response
-- **Security**: Zero-trust architecture, compliance, and threat protection
-- **Reliability**: High availability, disaster recovery, and fault tolerance
-- **Performance**: Auto-scaling, caching, and resource optimization
-- **Cost Optimization**: Right-sizing, reserved capacity, and spend analysis
+---
+### Tasks Overview
 
-### Tasks to be carried out this week
+| Day | Task                                                                                                                                                                                                                                                                                    | Start Date | Completion Date | Reference Material                                                                                                                              |
+|:---:| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |:----------:|:---------------:| ----------------------------------------------------------------------------------------------------------------------------------------------- |
+|  2  | **Operational Excellence**:<br>- Automating tasks (server shutdown, Slack notifications) with AWS Lambda<br>- Building a monitoring dashboard with CloudWatch and Grafana<br>- Managing resources and EC2 access permissions based on Tags<br>- Automating management and operations with AWS Systems Manager<br>- Implementing Infrastructure as Code (IaC) with AWS CloudFormation | 09/29/2025 | 09/29/2025      | [https://cloudjourney.awsstudygroup.com/](https://cloudjourney.awsstudygroup.com/)<br>[https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i](https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i) |
+|  3  | **Security**:<br>- Setting up Single Sign-On (SSO) for the organization<br>- Limiting maximum user permissions with IAM Permission Boundaries<br>- Auditing security standards with AWS Security Hub<br>- Protecting web applications and APIs with AWS WAF<br>- Managing encryption keys centrally with AWS KMS | 09/30/2025 | 09/30/2025      | [https://cloudjourney.awsstudygroup.com/](https://cloudjourney.awsstudygroup.com/)<br>[https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i](https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i) |
+|  4  | **Reliability**:<br>- Developing a system backup and recovery strategy with AWS Backup<br>- Establishing direct connections between VPCs using VPC Peering<br>- Centrally managing network connectivity with AWS Transit Gateway for enhanced stability                               | 10/01/2025 | 10/01/2025      | [https://cloudjourney.awsstudygroup.com/](https://cloudjourney.awsstudygroup.com/)<br>[https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i](https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i) |
+|  5  | **Performance Efficiency**:<br>- Containerizing applications with Docker and deploying on Amazon ECS<br>- Building an automated CI/CD pipeline with AWS CodePipeline<br>- Implementing unlimited file storage with AWS File Storage Gateway<br>- Deploying a shared file system for Windows with Amazon FSx<br>- Building a Data Lake and designing an advanced architecture with DynamoDB | 10/02/2025 | 10/02/2025      | [https://cloudjourney.awsstudygroup.com/](https://cloudjourney.awsstudygroup.com/)<br>[https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i](https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i) |
+|  6  | **Cost Optimization**:<br>- Optimizing expenses with Savings Plans and Reserved Instances<br>- Right-sizing EC2 configurations<br>- Visualizing AWS service usage costs<br>- Performing in-depth cost analysis with AWS Glue and Amazon Athena<br>- Reviewing and consolidating the 5 pillars of the Well-Architected Framework | 10/03/2025 | 10/03/2025      | [https://cloudjourney.awsstudygroup.com/](https://cloudjourney.awsstudygroup.com/)<br>[https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i](https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i) |
 
-<!-- markdownlint-disable MD033 -->
-
-| Day | Task                                                                                                                                                                                                                                                                                                                                                                                                               | Start Date | Completion Date | Reference Material                                                                                                                |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| 2   | **Operational Excellence**:<br>- Automated server shutdown and Slack messaging with AWS Lambda<br>+ Create System Monitor with Amazon CloudWatch and Grafana<br>+ Manage resources in groups with Tag and Resource Groups<br>- Manage EC2 service access with Tag through IAM<br>+ Service management and task automation using AWS Systems Manager<br>- Initialize Infrastructure as Code with AWS CloudFormation | 09/29/2025 | 09/29/2025      | <https://cloudjourney.awsstudygroup.com><br><https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> |
-| 3   | **Security**:<br>- Set Single Sign-On (Amazon SSO) for the Organization<br>+ Limit User Permissions with IAM Permission Boundary<br>+ Limiting Role Transfer by Condition<br>- Check security benchmarks with AWS Security Hub<br>+ Securing Applications and APIs with Web Application Firewall (AWS WAF)<br>- Key Management with Key Management Service (AWS KMS)                                               | 09/30/2025 | 09/30/2025      | <https://cloudjourney.awsstudygroup.com><br><https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> |
-| 4   | **Reliability**:<br>- Implement a system backup plan with AWS Backup<br>+ Linking Virtual Private Clouds (VPCs) with VPC Peering<br>- Centrally manage connections with AWS Transit Gateway                                                                                                                                                                                                                        | 10/01/2025 | 10/01/2025      | <https://cloudjourney.awsstudygroup.com><br><https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> |
-| 5   | **Performance**:<br>- Deploy Applications with Docker<br>+ Deploy Applications to Amazon Elastic Container Service (Amazon ECS)<br>+ Deploy Applications with AWS CodePipeline<br>- Store unlimited data on AWS with File Storage Gateway<br>+ Implement Universal Repository for Windows using FSx<br>- Building Data lake on AWS<br>+ Advanced Architecture with Amazon DynamoDB                                 | 10/02/2025 | 10/02/2025      | <https://cloudjourney.awsstudygroup.com><br><https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> |
-| 6   | **Cost Optimization**:<br>- Optimize cost with Savings Plans, Reserved Instance, Reserved DB Instance<br>+ Choose the right serving size for Amazon EC2 Resource Optimization<br>+ Visualize Cost of Usage on AWS<br>- Advanced usage cost analysis with AWS Glue and Amazon Athena<br>- Review and consolidate 5 pillars of Well-Architected Framework                                                            | 10/03/2025 | 10/03/2025      | <https://cloudjourney.awsstudygroup.com><br><https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> |
-
-<!-- markdownlint-enable MD033 -->
-
+---
 ### Week 4 Achievements
 
 #### What was accomplished
 
-- **Operational Excellence**: Automated server shutdown, system monitoring with CloudWatch/Grafana, resource management with Tags
-- **Security**: Set up SSO, IAM Permission Boundary, AWS WAF, KMS key management, Security Hub benchmarks
-- **Reliability**: Implemented AWS Backup, VPC Peering, Transit Gateway for reliable systems
-- **Performance**: Docker/ECS deployment, CodePipeline automation, File Storage Gateway, FSx, Data Lake, DynamoDB architecture
-- **Cost Optimization**: Savings Plans, Reserved Instances, right-sizing, cost visualization, advanced analytics with Glue/Athena
-- Practiced end-to-end optimization: from operations, security to performance and cost
+-   **Automated Operations & Monitoring**: Finalized automated server shutdown processes, built performance monitoring dashboards with CloudWatch/Grafana, and centralized resource management using Tags.
+-   **Comprehensive Security Hardening**: Successfully configured SSO, applied IAM Permission Boundaries for strict access control, deployed a Web Application Firewall (WAF), and managed encryption with KMS.
+-   **Enhanced System Reliability**: Implemented an automated backup plan with AWS Backup and configured VPC Peering and Transit Gateway to ensure stable and resilient network connectivity.
+-   **Application Performance Optimization**: Deployed containerized applications via Docker/ECS, automated the CI/CD pipeline with CodePipeline, and designed high-performance data architectures with DynamoDB and a Data Lake.
+-   **Effective Cost Management**: Successfully applied Savings Plans/Reserved Instances, performed EC2 right-sizing, and utilized Glue/Athena for advanced, granular cost analysis.

@@ -9,11 +9,11 @@ chapter: false
 
 ### Thông tin sinh viên:
 
-&emsp; **Họ và tên:** Nguyễn Nhựt Trường
+&emsp; **Họ và tên:** Huỳnh Hoàng Long
 
-&emsp; **Số điện thoại:** 0798065047
+&emsp; **Số điện thoại:** 0785773235
 
-&emsp; **Email:** truongnnse182324@fpt.edu.vn
+&emsp; **Email:** longhhse182429@fpt.edu.vn
 
 &emsp; **Trường:** Trường đại học FPT
 
@@ -27,7 +27,7 @@ chapter: false
 
 &emsp; **Thời gian thực tập:** Từ ngày 12/08/2025 đến ngày 12/11/2025
 
-![Ảnh đại diện của bạn](/images/avatar.png)
+![Ảnh đại diện của bạn](/images/avatar.jpg)
 
 ### Nội dung báo cáo
 

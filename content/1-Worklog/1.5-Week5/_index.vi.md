@@ -6,42 +6,38 @@ chapter: false
 pre: " <b> 1.5. </b> "
 ---
 
-### Mục tiêu tuần 5:
+### Mục tiêu Tuần 5: Chuẩn bị và Thiết lập Dự án
 
-- Kết nối, làm quen với các thành viên trong First Cloud Journey.
-- Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+Tuần này đánh dấu sự chuyển đổi từ giai đoạn học lý thuyết sang chuẩn bị triển khai dự án thực tế. Các mục tiêu chính bao gồm:
+-   **Kết nối và Hợp tác**: Làm quen và trao đổi với các thành viên trong nhóm First Cloud Journey (FCJ) để chuẩn bị cho dự án chung.
+-   **Thiết lập Môi trường Phát triển**: Nghiên cứu và cài đặt các công cụ cần thiết cho việc phát triển dự án, bao gồm cả việc thử nghiệm các giải pháp chạy dịch vụ AWS tại local.
+-   **Tìm hiểu Công cụ IaC**: Bắt đầu làm quen với AWS CDK (Cloud Development Kit) như một công cụ Infrastructure as Code (IaC) để tự động hóa việc triển khai hạ tầng.
 
-### Các công việc cần triển khai trong tuần này:
+---
+### Tổng quan công việc
 
-| Thứ | Công việc                                                                                                                                                                          | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
-| --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | -------------- |
-| 2   | - Nghỉ ốm                                                                                                                                                                          | 06/10/2025   | 06/10/2025      |                |
-| 3   | - Dịch Blogs được giao                                                                                                                                                             | 07/10/2025   | 07/10/2025      |                |
-| 4   | - Ôn tập kiến thức tuần số 4 <br> - Tiếp tục dịch blog                                                                                                                             | 08/10/2025   | 08/10/2025      |                |
-| 5   | - Tìm hiểu, cài môi trường chuẩn bị dev dự án <br> - Tìm cách chạy các service AWS local để tối ưu                                                                                 | 09/10/2025   | 09/10/2025      |                |
-| 6   | - Cố gắng cài DynamoDB local với Docker (không thành công) <br> - Quyết định sử dụng DynamoDB trên AWS cloud trực tiếp <br> - Tìm hiểu cơ bản về CDK và cách tổ chức thư mục dự án | 10/10/2025   | 10/10/2025      |                |
+| Ngày | Nhiệm vụ                                                                                                                                                                                           | Ngày bắt đầu | Ngày hoàn thành |
+|:----:| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |:------------:|:---------------:|
+|  2   | - Nghỉ ốm                                                                                                                                                                                          | 06/10/2025   | 06/10/2025      |
+|  3   | - Thực hiện dịch các bài blog kỹ thuật được giao                                                                                                                                                    | 07/10/2025   | 07/10/2025      |
+|  4   | - Ôn tập kiến thức đã học trong Tuần 4<br>- Tiếp tục công việc dịch blog                                                                                                                            | 08/10/2025   | 08/10/2025      |
+|  5   | - Nghiên cứu và thiết lập môi trường phát triển cho dự án<br>- Tìm hiểu phương án chạy dịch vụ AWS local để tối ưu hóa quy trình                                                                    | 09/10/2025   | 09/10/2025      |
+|  6   | - Thử nghiệm cài đặt DynamoDB local với Docker (không thành công)<br>- Quyết định chuyển sang sử dụng DynamoDB trên AWS cloud<br>- Tìm hiểu cơ bản về AWS CDK và cấu trúc thư mục của một dự án CDK | 10/10/2025   | 10/10/2025      |
 
-### Kết quả đạt được tuần 5:
+---
+### Kết quả đạt được
 
-- Hoàn thành việc dịch các blogs được giao cho dự án FCJ.
+#### Những gì đã hoàn thành
 
-- Ôn tập và củng cố lại kiến thức đã học ở tuần 4.
-
-- Thiết lập môi trường phát triển cho dự án sắp tới:
-
-  - Nghiên cứu các công cụ và cấu hình cần thiết
-  - Tìm hiểu phương pháp chạy các dịch vụ AWS local để tối ưu chi phí và tăng tốc độ phát triển
-
-- Cố gắng cài đặt và cấu hình DynamoDB local:
-
-  - Thử thiết lập môi trường Docker
-  - Gặp vấn đề với cấu hình DynamoDB local
-  - Quyết định sử dụng DynamoDB trên AWS cloud trực tiếp để đảm bảo độ tin cậy và dễ dàng thiết lập
-
-- Học được kiến thức cơ bản về AWS CDK (Cloud Development Kit):
-
-  - Hiểu các khái niệm và lợi ích của CDK
-  - Học cách tổ chức và cấu trúc thư mục dự án CDK
-  - Làm quen với cú pháp và pattern của CDK
-
-- Chuẩn bị nền tảng cho quy trình phát triển trên cloud với các dịch vụ AWS.
+-   **Hoàn thành công việc chung**: Dịch thuật thành công các bài blog kỹ thuật được phân công cho dự án First Cloud Journey.
+-   **Củng cố kiến thức**: Ôn tập và hệ thống hóa lại các kiến thức quan trọng từ Tuần 4, đặc biệt là các trụ cột của AWS Well-Architected Framework.
+-   **Thiết lập môi trường phát triển dự án**:
+    -   Nghiên cứu các công cụ và cấu hình cần thiết để bắt đầu.
+    -   Khám phá các phương pháp chạy dịch vụ AWS tại local nhằm tiết kiệm chi phí và tăng tốc độ phát triển.
+-   **Thử nghiệm và đưa ra quyết định về cơ sở dữ liệu**:
+    -   Nỗ lực cài đặt và cấu hình DynamoDB local sử dụng Docker nhưng gặp phải sự cố kỹ thuật.
+    -   Đưa ra quyết định chiến lược là sử dụng trực tiếp DynamoDB trên AWS cloud để đảm bảo tính ổn định và đơn giản hóa quá trình thiết lập.
+-   **Bắt đầu làm quen với AWS CDK (Cloud Development Kit)**:
+    -   Nắm được các khái niệm và lợi ích cốt lõi của CDK.
+    -   Tìm hiểu cách tổ chức và cấu trúc thư mục cho một dự án CDK, chuẩn bị cho việc quản lý hạ tầng bằng mã lệnh.
+-   **Đặt nền móng**: Chuẩn bị nền tảng vững chắc cho quy trình phát triển dựa trên đám mây với các dịch vụ của AWS.

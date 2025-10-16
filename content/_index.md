@@ -9,7 +9,7 @@ chapter: false
 
 ### Student Information:
 
-&emsp; **Full Name:** Nguyen Nhut Truong
+&emsp; **Full Name:** Huynh Hoang Long
 
 &emsp; **Phone Number:** 0798065047
 
@@ -27,7 +27,7 @@ chapter: false
 
 &emsp; **Internship Duration:** From 12/08/2025 to 12/11/2025
 
-![Your profile picture](/images/avatar.png)
+![Your profile picture](/images/avatar.jpg)
 
 ### Report Content
 

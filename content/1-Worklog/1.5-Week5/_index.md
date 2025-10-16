@@ -6,42 +6,38 @@ chapter: false
 pre: " <b> 1.5. </b> "
 ---
 
-### Week 5 Objectives:
+### Week 5 Objectives: Project Kick-off and Setup
 
-- Connect and get acquainted with members of First Cloud Journey.
-- Understand basic AWS services, how to use the console & CLI.
+This week marked a transition from theoretical learning to practical project preparation. The key objectives were:
+-   **Team Collaboration**: Connect with and get to know the members of the First Cloud Journey (FCJ) team to prepare for collaborative project work.
+-   **Development Environment Setup**: Research and install the necessary tools for the project, including experimenting with solutions for running AWS services locally.
+-   **IaC Tool Exploration**: Begin learning AWS CDK (Cloud Development Kit) as an Infrastructure as Code (IaC) tool to automate infrastructure deployment.
 
-### Tasks to be carried out this week:
+---
+### Tasks Overview
 
-| Day | Task                                                                                                                                                                          | Start Date | Completion Date | Reference Material |
-| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------------- | ------------------ |
-| 2   | - Sick leave                                                                                                                                                                  | 10/06/2025 | 10/06/2025      |                    |
-| 3   | - Translate assigned blogs                                                                                                                                                    | 10/07/2025 | 10/07/2025      |                    |
-| 4   | - Review Week 4 knowledge <br> - Continue translating blogs                                                                                                                   | 10/08/2025 | 10/08/2025      |                    |
-| 5   | - Research and set up development environment for the project <br> - Find ways to run AWS services locally for optimization                                                   | 10/09/2025 | 10/09/2025      |                    |
-| 6   | - Attempt to install DynamoDB local with Docker (unsuccessful) <br> - Decide to use DynamoDB on AWS cloud directly <br> - Learn basics about CDK and project folder structure | 10/10/2025 | 10/10/2025      |                    |
+| Day | Task                                                                                                                                                                                             | Start Date | Completion Date |
+|:---:| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |:----------:|:---------------:|
+|  2  | - Sick leave                                                                                                                                                                                     | 10/06/2025 | 10/06/2025      |
+|  3  | - Translated assigned technical blogs                                                                                                                                                            | 10/07/2025 | 10/07/2025      |
+|  4  | - Reviewed knowledge from Week 4<br>- Continued blog translation work                                                                                                                            | 10/08/2025 | 10/08/2025      |
+|  5  | - Researched and set up the development environment for the project<br>- Explored methods to run AWS services locally for optimization                                                           | 10/09/2025 | 10/09/2025      |
+|  6  | - Attempted to install DynamoDB local with Docker (unsuccessful)<br>- Decided to use DynamoDB on the AWS cloud instead<br>- Learned the basics of AWS CDK and its project folder structure         | 10/10/2025 | 10/10/2025      |
 
-### Week 5 Achievements:
+---
+### Week 5 Achievements
 
-- Successfully translated assigned blogs for the FCJ project.
+#### What was accomplished
 
-- Reviewed and consolidated knowledge from Week 4.
-
-- Set up the development environment for the upcoming project:
-
-  - Researched tools and configurations needed
-  - Explored methods to run AWS services locally for cost optimization and faster development
-
-- Attempted to install and configure DynamoDB local:
-
-  - Tried setting up Docker environment
-  - Encountered issues with DynamoDB local configuration
-  - Made the decision to use DynamoDB on AWS cloud directly instead for reliability and ease of setup
-
-- Learned the basics of AWS CDK (Cloud Development Kit):
-
-  - Understanding CDK concepts and benefits
-  - Learned how to structure and organize CDK project folders
-  - Familiarized with CDK syntax and patterns
-
-- Prepared foundation for cloud-based development workflow with AWS services.
+-   **Completed Team Tasks**: Successfully translated the assigned technical blogs for the First Cloud Journey project.
+-   **Knowledge Consolidation**: Reviewed and solidified key concepts from Week 4, particularly the pillars of the AWS Well-Architected Framework.
+-   **Project Development Environment Setup**:
+    -   Researched the necessary tools and configurations to get started.
+    -   Explored methods for running AWS services locally to reduce costs and accelerate the development cycle.
+-   **Database Strategy and Decision-Making**:
+    -   Attempted to install and configure DynamoDB local using Docker but encountered technical difficulties.
+    -   Made a strategic decision to use the managed DynamoDB service on the AWS cloud directly to ensure stability and simplify setup.
+-   **Introduction to AWS CDK (Cloud Development Kit)**:
+    -   Grasped the core concepts and benefits of using CDK.
+    -   Learned how to organize and structure a CDK project, preparing for infrastructure management through code.
+-   **Foundation Laid**: Established a solid foundation for a cloud-native development workflow utilizing AWS services.
