@@ -11,9 +11,9 @@ chapter: false
 
 &emsp; **Full Name:** Huynh Hoang Long
 
-&emsp; **Phone Number:** 0798065047
+&emsp; **Phone Number:** 0785773235
 
-&emsp; **Email:** truongnnse182324@fpt.edu.vn
+&emsp; **Email:** longhhse182429@fpt.edu.vn
 
 &emsp; **University:** FPT Univeristy
 
