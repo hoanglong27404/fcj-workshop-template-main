@@ -1,57 +1,57 @@
 ---
 title: "Week 9 Worklog"
 date: 2025-10-13
-weight: 1
+weight: 9
 chapter: false
 pre: " <b> 1.9. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 9 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Develop Admin interface for room management
+* Create CRUD (Create, Read, Update, Delete) functionality for rooms
+* Fetch API from Swagger to get/add/edit/delete room data
+* Build admin dashboard with room list and management forms
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Tasks to carry out this week:
 
+| Day | Task | Start Date | Completion Date | Reference |
+| --- | ---- | ---------- | --------------- | --------- |
+| 2 | Design Admin Dashboard layout: create header, sidebar navigation, main content area. Use UI framework (Bootstrap, Material UI, Tailwind). | 9/11/2025 | 10/11/2025 | UI Framework docs |
+| 3 | Build READ functionality: display room list from API, create table with pagination, sort, filter. Fetch from Swagger endpoint. | 10/11/2025 | 11/11/2025 | Swagger API docs |
+| 4 | Build CREATE & UPDATE functionality: create add/edit room forms, validate input data, submit to API. | 11/11/2025 | 12/11/2025 | Form Validation libs |
+| 5 | Build DELETE functionality: add delete button, confirm dialog, call delete API. Refresh list after deletion. | 12/11/2025 | 13/11/2025 | Swagger API docs |
+| 6 | Wrap-up: test entire CRUD flow, check error handling, document bugs if any. Optimize code and UI/UX. | 13/11/2025 | 14/11/2025 | Personal notes |
+
+---
 
 ### Week 9 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+#### Admin Dashboard Design:
 
-* Successfully created and configured an AWS Free Tier account.
+* Designed responsive and user-friendly admin layout
+* Built sidebar navigation and header
+* Configured routing for admin pages
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+#### CRUD Functionality:
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Displayed room list with pagination, sort, filter
+* Created form to add new rooms with validation
+* Built form to edit room information
+* Implemented room deletion with confirmation
 
-* Used AWS CLI to perform basic operations such as:
+#### API Integration:
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+* Wrote fetch code for all CRUD endpoints from Swagger
+* Handled API responses and errors
+* Refreshed UI after each operation
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+#### UX Optimization:
+
+* Added loading indicators for API calls
+* Displayed success/error messages
+* Optimized table display and form validation
+
+#### Conclusion:
+
+This week completed the Admin interface with full CRUD functionality. Admins can now manage rooms efficiently through the web interface.

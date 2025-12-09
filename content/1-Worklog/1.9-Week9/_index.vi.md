@@ -1,59 +1,59 @@
 ---
 title: "Worklog Tuần 9"
 date: 2025-10-13
-weight: 1
+weight: 9
 chapter: false
 pre: " <b> 1.9. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu Tuần 9:
 
-### Mục tiêu tuần 9:
+* Phát triển giao diện Admin để quản lý phòng
+* Tạo chức năng CRUD (Create, Read, Update, Delete) cho phòng
+* Lấy API từ Swagger để lấy/thêm/sửa/xóa dữ liệu phòng
+* Xây dựng admin dashboard với danh sách phòng và form quản lý
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Công việc thực hiện trong tuần:
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| ---- | -------- | ------------ | --------------- | ------------------ |
+| 2 | Thiết kế layout Admin Dashboard: tạo header, sidebar navigation, khu vực nội dung chính. Sử dụng UI framework (Bootstrap, Material UI, Tailwind). | 9/11/2025 | 10/11/2025 | Tài liệu UI Framework |
+| 3 | Xây dựng chức năng READ: hiển thị danh sách phòng từ API, tạo bảng với phân trang, sắp xếp, lọc. Lấy từ Swagger endpoint. | 10/11/2025 | 11/11/2025 | Tài liệu Swagger API |
+| 4 | Xây dựng chức năng CREATE & UPDATE: tạo form thêm/sửa phòng, kiểm tra dữ liệu đầu vào, gửi lên API. | 11/11/2025 | 12/11/2025 | Thư viện Form Validation |
+| 5 | Xây dựng chức năng DELETE: thêm nút xóa, hộp thoại xác nhận, gọi delete API. Làm mới danh sách sau khi xóa. | 12/11/2025 | 13/11/2025 | Tài liệu Swagger API |
+| 6 | Tổng kết: kiểm tra toàn bộ quy trình CRUD, kiểm tra xử lý lỗi, ghi chép bugs nếu có. Tối ưu hóa code và UI/UX. | 13/11/2025 | 14/11/2025 | Ghi chú cá nhân |
 
+---
 
-### Kết quả đạt được tuần 9:
+### Kết quả đạt được Tuần 9:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+#### Thiết kế Admin Dashboard:
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Thiết kế layout admin responsive và thân thiện với người dùng
+* Xây dựng sidebar navigation và header
+* Cấu hình routing cho các trang admin
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+#### Chức năng CRUD:
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Hiển thị danh sách phòng với phân trang, sắp xếp, lọc
+* Tạo form thêm phòng mới với kiểm tra dữ liệu
+* Xây dựng form chỉnh sửa thông tin phòng
+* Triển khai xóa phòng với xác nhận
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+#### Tích hợp API:
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
+* Viết code fetch cho tất cả các CRUD endpoints từ Swagger
+* Xử lý các response và lỗi từ API
+* Làm mới giao diện sau mỗi thao tác
 
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+#### Tối ưu hóa UX:
+
+* Thêm loading indicators cho các lần gọi API
+* Hiển thị thông báo thành công/lỗi
+* Tối ưu hóa hiển thị bảng và kiểm tra form
+
+#### Kết luận:
+
+Tuần này hoàn thành giao diện Admin với đầy đủ chức năng CRUD. Quản trị viên giờ đã có thể quản lý phòng hiệu quả thông qua giao diện web.
 
 

@@ -1,59 +1,57 @@
 ---
 title: "Worklog Tuần 7"
 date: 2025-10-13
-weight: 1
+weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu Tuần 7:
 
-### Mục tiêu tuần 7:
+* Tìm hiểu về Amazon Cognito - dịch vụ quản lý danh tính và xác thực người dùng
+* Thực hành tạo User Pools và cấu hình xác thực
+* Tìm hiểu về Amazon Location Service - dịch vụ định vị và bản đồ
+* Tích hợp Cognito với ứng dụng và Location Service
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Công việc thực hiện trong tuần:
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| ---- | -------- | ------------ | --------------- | ------------------ |
+| 2 | Học các khái niệm cơ bản về Cognito: User Pools vs Identity Pools, luồng xác thực và các trường hợp sử dụng. Tạo một User Pool đơn giản với chính sách mật khẩu. | 26/10/2025 | 27/10/2025 | <https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools.html> |
+| 3 | Cấu hình Cognito User Pool: thêm người dùng, thiết lập xác minh email, xác thực đa yếu tố (MFA) và khôi phục mật khẩu. | 27/10/2025 | 28/10/2025 | <https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-custom-message.html> |
+| 4 | Tìm hiểu Amazon Location Service: tạo tài nguyên bản đồ, sử dụng tìm kiếm địa điểm và tính toán tuyến đường. Kiểm tra các API cơ bản. | 28/10/2025 | 29/10/2025 | <https://docs.aws.amazon.com/location/latest/developerguide/what-is.html> |
+| 5 | Tích hợp Cognito với Location Service: cấu hình IAM roles để cho phép người dùng Cognito truy cập tài nguyên Location Service. Kiểm tra quy trình end-to-end. | 29/10/2025 | 30/10/2025 | <https://docs.aws.amazon.com/cognito/latest/developerguide/iam-roles.html> |
+| 6 | Tổng kết: xem xét cấu hình bảo mật cho cả Cognito và Location Service, kiểm tra CloudWatch logs và dọn dẹp tài nguyên. Ghi chép các bước quan trọng. | 30/10/2025 | 1/11/2025 | Ghi chú cá nhân |
 
+---
 
-### Kết quả đạt được tuần 7:
+### Kết quả đạt được Tuần 7:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+#### Cognito User Pool:
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Tạo thành công User Pool với các cấu hình bảo mật
+* Thêm người dùng và cấu hình xác thực (xác minh email, MFA)
+* Hiểu về luồng xác thực và JWT tokens
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+#### Cognito Identity Pool:
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Học cách cấp quyền tạm thời cho người dùng chưa xác thực
+* Cấu hình IAM roles cho Cognito identities
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+#### Location Service:
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
+* Tạo tài nguyên bản đồ và kiểm tra APIs
+* Sử dụng tìm kiếm địa điểm và tính toán tuyến đường
+* Hiểu về mô hình định giá
 
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+#### Tích hợp:
+
+* Tích hợp thành công xác thực Cognito với tài nguyên Location Service
+* Cấu hình IAM policies cho quyền truy cập người dùng
+* Xác minh quy trình end-to-end
+
+#### Kết luận:
+
+Tuần này đề cập đến quản lý danh tính AWS và các dịch vụ định vị. Kết hợp Cognito với Location Service cho phép xây dựng các ứng dụng nhận biết vị trí với xác thực người dùng an toàn.
 
 

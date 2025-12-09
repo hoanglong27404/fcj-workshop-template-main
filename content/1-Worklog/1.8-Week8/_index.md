@@ -1,57 +1,56 @@
 ---
 title: "Week 8 Worklog"
 date: 2025-10-13
-weight: 1
+weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 8 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Design and develop Map interface for rental room search application
+* Understand and integrate Swagger API to fetch room data
+* Display room markers on map with detailed information
+* Practice handling API data and rendering on map
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Tasks to carry out this week:
 
+| Day | Task | Start Date | Completion Date | Reference |
+| --- | ---- | ---------- | --------------- | --------- |
+| 2 | Study Swagger API: read documentation, understand API structure, test endpoints to fetch room list. Document endpoints, parameters, and response format. | 2/11/2025 | 3/11/2025 | Swagger Documentation |
+| 3 | Design Map interface layout: create basic HTML/CSS for map, sidebar info, search filters. Use framework/library (React, Vue, or vanilla JS). | 3/11/2025 | 4/11/2025 | Google Maps API, Leaflet docs |
+| 4 | Integrate Map library: use Google Maps or Leaflet, display basic map, implement zoom/pan. Test interactive features. | 4/11/2025 | 5/11/2025 | Google Maps API Guide |
+| 5 | Fetch API from Swagger: write fetch/axios code to call API, process response, display room markers on map with room number and price. | 5/11/2025 | 6/11/2025 | Swagger Endpoints |
+| 6 | Wrap-up: check API logic, test marker display, optimize performance. Document issues encountered and solutions. | 6/11/2025 | 7/11/2025 | Personal notes |
+
+---
 
 ### Week 8 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+#### Swagger API Integration:
 
-* Successfully created and configured an AWS Free Tier account.
+* Understood API structure and required endpoints
+* Successfully wrote code to fetch data from Swagger
+* Handled error handling and response validation
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+#### Map Interface:
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Designed Map interface layout with HTML/CSS
+* Successfully integrated Map library
+* Displayed room markers with basic information
 
-* Used AWS CLI to perform basic operations such as:
+#### Frontend Development:
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+* Processed API data and rendered on map
+* Implemented zoom, pan, and click marker to view details
+* Optimized performance when loading many markers
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+#### Problem Solving:
+
+* Resolved CORS and API timeout issues
+* Debugged marker display logic
+* Documented best practices for frontend development
+
+#### Conclusion:
+
+This week completed the Map frontend interface with Swagger API integration. The Map interface can now display rooms and allow basic user interaction.

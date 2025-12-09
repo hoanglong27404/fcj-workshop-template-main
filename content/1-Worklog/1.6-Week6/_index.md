@@ -1,41 +1,55 @@
 ---
 title: "Week 6 Worklog"
 date: 2025-10-13
-weight: 1
+weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
+### Week 6 Objectives:
 
-### Week 6 Objectives: Laying the Foundation
+* Advance knowledge in Identity and Access Management (IAM) with advanced concepts
+* Learn about Amazon DynamoDB - a fully managed NoSQL database service
+* Practice creating, configuring, and managing DynamoDB tables
+* Understand DynamoDB pricing models and best practices
 
-This foundational week was focused on building essential AWS knowledge and practical skills from the ground up. The main objectives were:
--   **Onboarding and Team Integration**: Connect with the First Cloud Journey (FCJ) team members and understand the program's rules and regulations.
--   **Understanding Core AWS Services**: Grasp the fundamental concepts of core AWS service categories, including Compute, Storage, Networking, and Database.
--   **Mastering AWS Interaction Tools**: Become proficient with the primary tools for interacting with AWS: the AWS Management Console and the AWS Command Line Interface (CLI).
+### Tasks to carry out this week:
 
----
-### Tasks Overview
-
-| Day | Task                                                                                                                                                                                           | Start Date | Completion Date | Reference Material                                                                                                                              |
-|:---:| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |:----------:|:---------------:| ----------------------------------------------------------------------------------------------------------------------------------------------- |
-|  2  | - Onboarded with the FCJ team members<br>- Reviewed and noted the internship unit's rules and regulations                                                                                        | 10/13/2025 | 10/13/2025      |                                                                                                                                                 |
-|  3  | - Explored an overview of AWS and its main service categories:<br>&emsp;+ Compute<br>&emsp;+ Storage<br>&emsp;+ Networking<br>&emsp;+ Database                                                        | 10/14/2025 | 10/14/2025      | [https://cloudjourney.awsstudygroup.com/](https://cloudjourney.awsstudygroup.com/)<br>[https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i](https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i) |
-|  4  | - **Hands-on Practice:**<br>&emsp;+ Created an AWS Free Tier account<br>&emsp;+ Familiarized with the AWS Management Console & AWS CLI<br>&emsp;+ Installed and configured the AWS CLI              | 10/15/2025 | 10/15/2025      | [https://cloudjourney.awsstudygroup.com/](https://cloudjourney.awsstudygroup.com/)<br>[https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i](https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i) |
-|  5  | - Learned EC2 fundamentals:<br>&emsp;+ Instance Types<br>&emsp;+ AMIs and EBS<br>&emsp;+ Elastic IPs<br>- Researched methods for connecting to EC2 instances via SSH                                   | 10/16/2025 | 10/16/2025      | [https://cloudjourney.awsstudygroup.com/](https://cloudjourney.awsstudygroup.com/)<br>[https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i](https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i) |
-|  6  | - **Hands-on Practice:**<br>&emsp;+ Launched an EC2 instance<br>&emsp;+ Connected to the instance via SSH<br>&emsp;+ Attached an EBS volume to the instance                                         | 10/17/2025 | 10/17/2025      | [https://cloudjourney.awsstudygroup.com/](https://cloudjourney.awsstudygroup.com/)<br>[https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i](https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i) |
+| Day | Task | Start Date | Completion Date | Reference |
+| --- | ---- | ---------- | --------------- | --------- |
+| 2 | Review IAM Advanced concepts: policy evaluation logic, resource-based policies, and permission boundaries. Practice writing more complex policies. | 20/10/2025 | 21/10/2025 | <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html> |
+| 3 | Learn DynamoDB basics: tables, items, attributes, primary keys (partition key & sort key). Create a simple table with on-demand billing. | 21/10/2025 | 22/10/2025 | <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html> |
+| 4 | Practice CRUD operations on DynamoDB: insert, query, update, and delete items. Use AWS Console and AWS CLI. | 22/10/2025 | 23/10/2025 | <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html> |
+| 5 | Learn about DynamoDB indexes (Global Secondary Indexes - GSI, Local Secondary Indexes - LSI) and how to use them for query optimization. Create and test a GSI. | 23/10/2025 | 25/10/2025 | <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SecondaryIndexes.html> |
+| 6 | Wrap-up: review IAM policies for DynamoDB access, check CloudWatch metrics, and clean up unnecessary resources. Document important steps. | 24/10/2025 | 25/10/2025 | Personal notes |
 
 ---
-### Week 6 Achievements
 
-#### What was accomplished
+### Week 6 Achievements:
 
--   **Gained Foundational Knowledge**: Acquired a solid understanding of the AWS ecosystem and its core service groups, including Compute, Storage, Networking, and Database.
--   **Account Setup**: Successfully created and configured an AWS Free Tier account, ready for hands-on practice and future deployments.
--   **Console Proficiency**: Became proficient with the AWS Management Console, able to navigate, locate, and utilize services effectively through the web interface.
--   **AWS CLI Configuration**: Completed the full setup and configuration of the AWS CLI on a local machine, including Access Keys, Secret Keys, and a Default Region.
--   **CLI Command Mastery**: Mastered basic CLI commands to perform essential tasks such as checking account information, listing resources (regions, EC2 instances), and managing key pairs.
--   **Flexible Resource Management**: Developed the ability to manage AWS resources seamlessly and efficiently across both the web-based Console and the command-line interface.
+#### IAM Advanced:
+
+* Deepened understanding of policy evaluation logic and resource-based policies
+* Successfully wrote complex policies for DynamoDB access control
+
+#### DynamoDB Fundamentals:
+
+* Successfully created and configured a DynamoDB table
+* Understood key schema concepts and attribute types
+* Practiced on-demand billing vs provisioned throughput
+
+#### CRUD Operations:
+
+* Successfully performed insert, query, update, and delete operations
+* Used AWS Console and AWS CLI for data management
+* Verified response times and performance metrics
+
+#### Indexing & Optimization:
+
+* Created Global Secondary Index for query optimization
+* Understood when to use GSI vs LSI
+* Checked query performance metrics
+
+#### Conclusion:
+
+This week provided a solid foundation in DynamoDB - a highly scalable NoSQL service. Combining IAM enables secure and efficient access control.

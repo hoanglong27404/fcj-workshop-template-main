@@ -1,59 +1,58 @@
 ---
 title: "Worklog Tuần 8"
 date: 2025-10-13
-weight: 1
+weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu Tuần 8:
 
-### Mục tiêu tuần 8:
+* Thiết kế và phát triển giao diện Bản đồ cho ứng dụng tìm kiếm phòng trọ
+* Hiểu và tích hợp Swagger API để lấy dữ liệu phòng
+* Hiển thị các marker phòng trên bản đồ với thông tin chi tiết
+* Thực hành xử lý dữ liệu API và hiển thị trên bản đồ
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Công việc thực hiện trong tuần:
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| ---- | -------- | ------------ | --------------- | ------------------ |
+| 2 | Nghiên cứu Swagger API: đọc tài liệu, hiểu cấu trúc API, kiểm tra endpoints để lấy danh sách phòng. Ghi chép endpoints, tham số và định dạng response. | 2/11/2025 | 3/11/2025 | Tài liệu Swagger |
+| 3 | Thiết kế giao diện Bản đồ: tạo HTML/CSS cơ bản cho bản đồ, sidebar thông tin, bộ lọc tìm kiếm. Sử dụng framework/library (React, Vue, hoặc vanilla JS). | 3/11/2025 | 4/11/2025 | Google Maps API, Leaflet docs |
+| 4 | Tích hợp thư viện Bản đồ: sử dụng Google Maps hoặc Leaflet, hiển thị bản đồ cơ bản, triển khai zoom/pan. Kiểm tra các tính năng tương tác. | 4/11/2025 | 5/11/2025 | Google Maps API Guide |
+| 5 | Lấy dữ liệu từ Swagger API: viết code fetch/axios để gọi API, xử lý response, hiển thị marker phòng trên bản đồ với số phòng và giá. | 5/11/2025 | 6/11/2025 | Swagger Endpoints |
+| 6 | Tổng kết: kiểm tra logic API, test hiển thị marker, tối ưu hóa hiệu suất. Ghi chép các vấn đề gặp phải và giải pháp. | 6/11/2025 | 7/11/2025 | Ghi chú cá nhân |
 
+---
 
-### Kết quả đạt được tuần 8:
+### Kết quả đạt được Tuần 8:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+#### Tích hợp Swagger API:
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Hiểu cấu trúc API và các endpoints cần thiết
+* Viết thành công code để lấy dữ liệu từ Swagger
+* Xử lý error handling và kiểm tra tính hợp lệ của response
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+#### Giao diện Bản đồ:
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Thiết kế layout giao diện Bản đồ với HTML/CSS
+* Tích hợp thành công thư viện Bản đồ
+* Hiển thị marker phòng với thông tin cơ bản
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+#### Phát triển Frontend:
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
+* Xử lý dữ liệu API và hiển thị trên bản đồ
+* Triển khai zoom, pan và click marker để xem chi tiết
+* Tối ưu hóa hiệu suất khi tải nhiều marker
 
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+#### Giải quyết vấn đề:
+
+* Giải quyết các vấn đề CORS và API timeout
+* Debug logic hiển thị marker
+* Ghi chép các phương pháp tốt nhất cho phát triển frontend
+
+#### Kết luận:
+
+Tuần này hoàn thành giao diện Bản đồ frontend với tích hợp Swagger API. Giao diện Bản đồ giờ đã có thể hiển thị phòng và cho phép người dùng tương tác cơ bản.
 
 
