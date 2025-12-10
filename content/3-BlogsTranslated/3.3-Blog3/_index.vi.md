@@ -1,127 +1,373 @@
 ---
-title: "Blog 3"
+title: "Từ Máy ảo đến Kubernetes đến Serverless"
 date: 2025-10-13
-weight: 1
+weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Từ Máy ảo đến Kubernetes đến Serverless: Cách Dacadoo tiết kiệm 78% chi phí Cloud
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+**Tác giả:** Andreas Gehrig, Kevin Nash, Philippe Wanner  
+**Xuất bản:** 26 tháng 3, 2025  
+**Danh mục:** Amazon API Gateway, Amazon DynamoDB, Amazon Route 53, Amazon Simple Storage Service (S3), Kiến trúc, Quản lý Tài chính AWS Cloud, AWS Lambda, AWS WAF, Migration, Serverless, Tư duy Lãnh đạo
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
+## Giới thiệu
 
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
+Dacadoo là một công ty công nghệ toàn cầu có trụ sở tại Thụy Sĩ, chuyên về các giải pháp cho:
 
----
+- **Tương tác sức khỏe số**
+- **Định lượng rủi ro sức khỏe**
 
-## Hướng dẫn kiến trúc
+Sản phẩm của họ bao gồm nền tảng SaaS dựa trên:
 
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
+- **Khoa học hành vi**
+- **Trí tuệ nhân tạo (AI)**
+- **Gamification**
 
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
+Để giúp người dùng cuối cải thiện kết quả sức khỏe của họ.
 
-**Kiến trúc giải pháp bây giờ như sau:**
+## Hành trình hiện đại hóa
 
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+Công ty khởi xướng hành trình hiện đại hóa API để:
 
----
+- Định lượng dữ liệu sức khỏe và lối sống
+- Cung cấp công cụ đánh giá rủi ro
+- Tính toán xác suất tử vong và bệnh tật dựa trên dữ liệu nghiên cứu khoa học
 
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
+Để chuyển đổi các dịch vụ API dựa trên VM thành giải pháp tính toán điểm sức khỏe và rủi ro toàn cầu với khôi phục thảm họa, dacadoo đã chọn Amazon Web Services (AWS).
 
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+## Kết quả đạt được
 
----
+Kết quả:
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+* **Giảm 78% chi phí**  
+* **Thời gian bảo trì hạ tầng dưới 1 giờ/năm**  
+* **Triển khai nhiều hạ tầng AWS mà không mở rộng đội SRE**  
+* **Mức độ tự động hóa cao và tư duy agile**
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+## Bối cảnh: Ba giai đoạn tiến hóa
 
----
+Kiến trúc giải pháp tiến hóa qua ba giai đoạn:
 
-## The pub/sub hub
+**Giai đoạn 1:** Ươm tạo với Máy ảo  
+- Máy ảo đơn lẻ on-premises với khôi phục thảm họa (DR) tại Thụy Sĩ
 
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
+**Giai đoạn 2:** Toàn cầu và có thể mở rộng  
+- Nhiều cụm Kubernetes trên toàn cầu
 
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+**Giai đoạn 3:** Xuất sắc vận hành  
+- Hoàn toàn serverless với dự phòng địa lý trên AWS
 
----
+## Giai đoạn 1: Ươm tạo với Máy ảo
 
-## Core microservice
+### Kiến trúc ban đầu
 
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
+Sau nhiều năm nghiên cứu và phát triển khoa học, dịch vụ được ra mắt, chạy trên:
 
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
+- Một máy ảo on-premises đơn lẻ
+- Sử dụng công nghệ hypervisor để cung cấp khả năng khôi phục thảm họa (DR)
 
----
+Ứng dụng phục vụ:
+- Yêu cầu API
+- Cơ sở dữ liệu NoSQL
+- Tất cả chạy trên cùng một máy chủ
 
-## Front door microservice
+### Thách thức
 
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
+| Vấn đề | Chi tiết |
+|--------|----------|
+| Tính khả dụng cao | Không có HA, yêu cầu khôi phục thủ công |
+| Triển khai phần mềm | Thủ công qua SSH |
+| Bảo trì OS | Quy trình thủ công |
+| Mức độ tự động hóa | Rất thấp |
+| Sao lưu dữ liệu | Chỉ VM snapshots |
+| Giám sát | Thủ công, không tự động |
+| Kiểm thử | Chỉ trên máy trạm phát triển |
 
----
+### Hạn chế chính
 
-## Staging ER7 microservice
+- API chỉ có sẵn tại Thụy Sĩ
+- Bảo trì được thực hiện thủ công
+- Triển khai phần mềm được xử lý thủ công
+- Không có khả năng mở rộng toàn cầu
+- Vấn đề quản lý nhân sự
 
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
+## Giai đoạn 2: Toàn cầu và có thể mở rộng với Kubernetes
 
----
+### Quyết định chiến lược
 
-## Tính năng mới trong giải pháp
+Dacadoo đã đưa ra quyết định đầu tư chiến lược vào:
 
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+- **Kubernetes** để quản lý workloads được container hóa
+- **Quản lý toàn cầu** ở quy mô lớn
+
+### Triển khai toàn cầu
+
+Do khách hàng phân tán địa lý và yêu cầu độ trễ thấp:
+
+**Ba cụm Kubernetes được triển khai:**
+- Mỗi cụm ở một lục địa khác nhau
+- Cơ sở dữ liệu NoSQL được lưu trữ gần workloads
+- Giảm độ trễ dịch vụ và nỗ lực migration
+
+### Tối ưu hóa vận hành
+
+**Cơ sở dữ liệu NoSQL:**
+- Tích hợp như dịch vụ SaaS
+- Giảm thiểu bảo trì vận hành
+
+**Giám sát:**
+- Tập trung với Datadog
+
+**Cung cấp hạ tầng:**
+- Độc quyền với Terraform
+- Bao gồm: cụm Kubernetes, cơ sở dữ liệu NoSQL, tích hợp GitLab & Datadog
+
+**CI/CD:**
+- Sử dụng GitLab CI/CD
+- Triển khai đến nhiều môi trường và cụm
+- Hệ thống siêu quy mô hành tinh
+
+### So sánh: VM vs Kubernetes
+
+| Tiêu chí | Máy ảo | Kubernetes |
+|----------|--------|------------|
+| Khả năng mở rộng | Thấp | Cao |
+| Tính khả dụng | Cố gắng tốt nhất | 99.95% |
+| Chi phí hạ tầng | Thấp | Cao |
+| Nỗ lực bảo trì | Cao | Trung bình |
+
+### Thách thức
+
+**Chi phí cao:**
+- Ba cụm Kubernetes khu vực
+- Ba môi trường
+- Tổng cộng: 27 node cụm
+
+**Chi phí bổ sung:**
+- Quản lý các instance cơ sở dữ liệu NoSQL SaaS cho mỗi cụm
+
+**Độ phức tạp:**
+- Quy trình CI/CD đa cụm đa môi trường
+- Nỗ lực vận hành đáng kể để duy trì hạ tầng
+- Cần cập nhật liên tục các thành phần Kubernetes
+
+## Giai đoạn 3: Xuất sắc vận hành với Serverless
+
+### Tại sao chuyển sang Serverless?
+
+Kiến trúc dựa trên Kubernetes đáp ứng yêu cầu, nhưng:
+
+- Một số tính năng API backlog cần sự liên kết tốt hơn
+- Kiến trúc cần liên kết với công nghệ mới nhất
+- Cần tối ưu hóa các phương pháp tốt nhất
+
+Đây là thời điểm phù hợp để:
+- Có cái nhìn toàn diện về kiến trúc hạ tầng và phần mềm
+- Tái cấu trúc giải pháp với công nghệ mới nhất của AWS
+
+### Yêu cầu giải pháp
+
+Yêu cầu cho việc tái cấu trúc:
+
+* **Duy trì chức năng API**
+
+* **Hạn chế xử lý dữ liệu ở các khu vực được chọn** (tuân thủ luật bảo vệ dữ liệu địa phương)
+
+* **Tránh chu kỳ vá lỗi hàng tuần** - chỉ sử dụng dịch vụ serverless được quản lý
+
+* **Giảm chi phí** - chọn dịch vụ với mô hình định giá pay-as-you-go
+
+* **Ủy thác xác thực cho dịch vụ chuyên dụng**
+
+* **Sử dụng web framework đã được thiết lập với hệ sinh thái rộng**
+
+### Tái cấu trúc ứng dụng
+
+**Dịch vụ API bao gồm:**
+- Developer Portal (Cổng thông tin nhà phát triển)
+- API tính toán điểm sức khỏe và rủi ro
+
+**Cơ sở dữ liệu chỉ cần:**
+- API keys
+- Tham số thuật toán
+- Quotas
+- Thống kê sử dụng
+
+### Cơ sở dữ liệu phân tán
+
+**Dữ liệu sức khỏe:**
+- Được xử lý theo khu vực bởi lớp tính toán
+- KHÔNG được lưu trữ (chỉ xử lý tạm thời)
+- Mở cơ hội cho cơ sở dữ liệu phân tán
+
+**Amazon DynamoDB Global Tables:**
+- Lựa chọn hoàn hảo cho giải pháp này
+- Ghi: Phân tán đến tất cả các khu vực được kết nối
+- Đọc: Được thực hiện cục bộ
+- Độ trễ thấp - đáp ứng SLA của Dacadoo
+
+### Thành phần kiến trúc
+
+**Developer Portal:**
+- Giao diện người dùng web
+- Tài liệu API
+- Quản lý API key
+- AWS Lambda - tự động mở rộng, trả tiền theo yêu cầu
+
+**Health and Risk API:**
+- Thuật toán được triển khai bằng C (mô phỏng ngắn)
+- Yêu cầu tính toán chuyên sâu
+- REST API được bao bọc trong Python FastAPI
+- AWS Lambda - lựa chọn xuất sắc
+
+## Kiến trúc Serverless chi tiết
+
+### Luồng yêu cầu
+
+**Yêu cầu HTTP:**
+- Được định tuyến qua Amazon API Gateway
+- Được bảo vệ bởi AWS WAF (chống lại yêu cầu độc hại)
+- Được chuyển tiếp đến các hàm AWS Lambda
+
+**Tài nguyên tĩnh:**
+- Được phục vụ từ Amazon S3
+- Qua API Gateway
+- CloudFront không cần thiết (giảm độ phức tạp)
+
+### Định tuyến DNS toàn cầu
+
+**Amazon Route 53 - Định tuyến dựa trên độ trễ:**
+- Chuyển hướng truy vấn DNS đến endpoint có độ trễ thấp nhất
+- Cung cấp HA khu vực cho người dùng API
+- Không yêu cầu vị trí xử lý dữ liệu cụ thể
+- Người dùng có thể gọi endpoints cụ thể theo khu vực (nếu cần tuân thủ quy định)
+
+### Xác thực và ủy quyền
+
+**Ủy quyền API:**
+- Dựa trên HTTP headers
+- Được triển khai trong ứng dụng
+- Dữ liệu được lưu trữ trong Amazon DynamoDB
+
+## Infrastructure as Code với Pulumi
+
+### Lựa chọn công cụ
+
+Đội SRE thành thạo Python, đã chọn Pulumi:
+
+**Ưu điểm:**
+
+* **Kiểm soát luồng ngôn ngữ lập trình** - lập trình ngôn ngữ  
+* **Khả năng cấu hình mạnh mẽ**  
+* **Hỗ trợ đa cloud**
+
+### Pipeline CI/CD
+
+**GitLab CI:**
+- Biên dịch thư viện thuật toán
+- Kiểm thử ứng dụng FastAPI
+- Đóng gói mọi thứ
+
+**Triển khai:**
+- Chỉ là cập nhật AWS Lambda
+- Quy trình đơn giản và đáng tin cậy
+
+### Nâng cao kỹ năng
+
+**Chuyển đổi:**
+- Từ cách tiếp cận dựa trên cấu hình
+- Đến thiết kế cơ sở mã hạ tầng
+- Sử dụng lập trình hướng đối tượng Python
+
+**Kết quả:**
+- SRE phát triển kỹ năng kỹ thuật phần mềm
+- Đầu tư vào hiện đại hóa đội ngũ
+- Văn hóa GitOps tập trung vào năng suất
+
+## So sánh toàn diện
+
+| Tiêu chí | Máy ảo | Kubernetes | Serverless |
+|----------|--------|------------|------------|
+| Khả năng mở rộng | Thấp | Cao | Rất cao |
+| Tính khả dụng | Cố gắng tốt nhất | 99.95% | 99.999%* |
+| Chi phí hạ tầng | Thấp | Cao | Thấp |
+| Nỗ lực bảo trì | Cao | Trung bình | Rất thấp |
+
+*Với dự phòng toàn cầu nâng tính khả dụng lên 99.999% trong khi giữ chi phí thấp.
+
+## Kết quả cuối cùng
+
+### Chi phí & Hiệu suất
+
+* **Giảm 78% chi phí**
+
+* **Thời gian bảo trì dưới 1 giờ/năm**
+
+* **99.999% tính khả dụng toàn cầu**
+
+* **Tự động hóa hoàn toàn**
+
+### Lợi ích chiến lược
+
+* **Triển khai nhiều hạ tầng AWS mà không mở rộng đội SRE**
+
+* **Đơn giản hóa độ phức tạp quản lý hạ tầng**
+
+* **Tăng cường tính linh hoạt và tự động hóa**
+
+* **Duy trì đội SRE tinh gọn**
+
+* **Giữ chi phí hạ tầng cạnh tranh**
+
+## Kết luận
+
+Migration từ máy ảo → Kubernetes → AWS Lambda chứng minh:
+
+**Sự tiến hóa của kỹ thuật cloud hướng tới:**
+
+📈 **Hiệu quả**  
+📈 **Khả năng mở rộng nâng cao**
+
+**Mỗi bước trong hành trình:**
+
+⬇️ **Giảm thiểu độ phức tạp quản lý hạ tầng**  
+⬆️ **Tăng cường tính linh hoạt và tự động hóa**
+
+**Kết quả cho Dacadoo:**
+
+✨ **Tăng trưởng nền tảng mạnh mẽ**  
+✨ **Nâng cao kỹ năng cho kỹ sư**  
+✨ **Duy trì đội SRE tinh gọn**  
+✨ **Cấu trúc chi phí cạnh tranh**
+
+### Bắt đầu
+
+Bắt đầu với giải pháp serverless AWS của riêng bạn!
+
+## Về các tác giả
+
+### Andreas Gehrig
+**Vị trí:** Senior Cloud Architect tại Dacadoo, Zurich, Thụy Sĩ
+
+**Background:** Kỹ thuật phần mềm
+
+**Chuyên môn:** Tận dụng công nghệ AWS để thiết kế và xây dựng giải pháp cloud-native cho ứng dụng và phân tích
+
+### Kevin Nash
+**Vị trí:** Senior Solutions Architect tại Amazon Web Services (AWS), Thụy Sĩ
+
+**Background:** Hệ thống phân tán
+
+**Chuyên môn:** Xây dựng giải pháp cho khách hàng, hỗ trợ migration cloud của khách hàng
+
+### Philippe Wanner
+**Vị trí:** Senior Expert Solutions Architect tại AWS
+
+**Chuyên môn:** Thúc đẩy các phương pháp tối ưu hóa cho migration và hiện đại hóa
+
+**Tập trung hiện tại:** Các lĩnh vực đa ngành bao gồm:
+- Hệ thống phân tán
+- Kiến trúc serverless
+- Chuyển đổi kinh doanh

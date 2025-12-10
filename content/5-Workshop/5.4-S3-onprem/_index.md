@@ -1,20 +1,24 @@
 ---
-title : "Access S3 from on-premises"
+title : "Seeding Data"
 date: 2025-10-13
 weight : 4
 chapter : false
 pre : " <b> 5.4. </b> "
 ---
 
-#### Overview
+## Why seed data?
 
-+ In this section, you will create an Interface endpoint to access Amazon S3 from a simulated on-premises environment. The Interface endpoint will allow you to route to Amazon S3 over a VPN connection from your simulated on-premises environment.
+Your infrastructure is ready, but the database is empty. You need a "Super Admin" account to manage the system.
 
-+ Why using **Interface endpoint**: 
-    + Gateway endpoints only work with resources running in the VPC where they are created. Interface endpoints work with resources running in VPC, and also resources running in on-premises environments. Connectivty from your on-premises environment to the cloud can be provided by AWS Site-to-Site VPN or AWS Direct Connect.
-    + Interface endpoints allow you to connect to services powered by AWS PrivateLink. These services include some AWS services, services hosted by other AWS customers and partners in their own VPCs (referred to as PrivateLink Endpoint Services), and supported AWS Marketplace Partner services. For this workshop, we will focus on connecting to Amazon S3.
+We will run a Node.js script that connects directly to AWS to:
 
-![Interface endpoint architecture](/images/5-Workshop/5.4-S3-onprem/diagram3.png)
+- Create a User in Cognito User Pool
+- Add that user to the Admins Group
+- Create a corresponding profile in the DynamoDB UserProfiles table
 
+## Content
 
-
+1. [Setup the Script](5.4.1-setup/)
+2. [Configure Environment](5.4.2-configure/)
+3. [Run the Script](5.4.3-run/)
+4. [Verification](5.4.4-verification/)

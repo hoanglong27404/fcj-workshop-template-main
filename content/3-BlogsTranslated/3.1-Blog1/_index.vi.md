@@ -1,126 +1,196 @@
 ---
-title: "Blog 1"
+title: "Hỗ trợ Web Application Firewall cho AWS Amplify"
 date: 2025-10-13
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+# Hỗ trợ Web Application Firewall cho các Website được lưu trữ trên AWS Amplify
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
+**Tác giả:** Sébastien Stormacq  
+**Xuất bản:** 26 tháng 3, 2025  
+**Danh mục:** Thông báo, AWS Amplify, AWS WAF, Nổi bật, Front-End Web & Mobile, Ra mắt, Tin tức, Bảo mật, Danh tính & Tuân thủ
 
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
+## Giới thiệu
 
----
+Hôm nay, chúng tôi thông báo về việc tích hợp AWS WAF (Web Application Firewall) với AWS Amplify Hosting. Các chủ sở hữu ứng dụng web luôn nỗ lực bảo vệ ứng dụng của họ khỏi các mối đe dọa khác nhau.
 
-## Hướng dẫn kiến trúc
+## Vấn đề trước đây
 
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
+Trước đây, nếu bạn muốn triển khai hệ thống bảo mật mạnh mẽ cho các ứng dụng Amplify Hosted, bạn cần:
 
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
+- Tạo kiến trúc sử dụng Amazon CloudFront với bảo vệ AWS WAF
+- Thực hiện các bước cấu hình phức tạp bổ sung
+- Yêu cầu chuyên môn kỹ thuật cao
+- Tăng chi phí quản lý đáng kể
 
-**Kiến trúc giải pháp bây giờ như sau:**
+## Giải pháp mới: Tích hợp AWS WAF với Amplify
 
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+Bây giờ, bạn có thể gắn trực tiếp tường lửa ứng dụng web vào ứng dụng AWS Amplify của mình thông qua:
 
----
+- Tích hợp một cú nhấp chuột trong bảng điều khiển Amplify, hoặc
+- Sử dụng Infrastructure as Code (IaC)
 
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
+Tích hợp này cho phép bạn:
 
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+- Truy cập tất cả các tính năng AWS WAF
+- Sử dụng các quy tắc được quản lý trước
+- Tạo quy tắc tùy chỉnh dựa trên nhu cầu ứng dụng cụ thể của bạn
+- Bảo vệ chống lại các lỗ hổng web phổ biến:
+  - SQL injection
+  - Cross-site scripting (XSS)
 
----
+## Chiến lược bảo mật mạnh mẽ
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+### 1. Bảo vệ DDoS
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+Bạn có thể tận dụng các quy tắc dựa trên tỷ lệ của AWS WAF để:
 
----
+- Giới hạn tỷ lệ yêu cầu từ các địa chỉ IP
+- Bảo vệ chống lại các cuộc tấn công từ chối dịch vụ phân tán (DDoS)
 
-## The pub/sub hub
+### 2. Chặn địa lý
 
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
+- Hạn chế truy cập vào ứng dụng của bạn từ các quốc gia cụ thể
+- Đặc biệt hữu ích nếu dịch vụ của bạn nhắm đến các khu vực địa lý cụ thể
 
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+## Bốn loại bảo vệ được cung cấp bởi Amplify
 
----
+### 1. Bảo vệ Firewall được Amplify khuyến nghị
 
-## Core microservice
+- Bảo vệ chống lại các lỗ hổng phổ biến nhất được tìm thấy trong ứng dụng web
+- Chặn địa chỉ IP từ các mối đe dọa tiềm ẩn dựa trên thông tin tình báo mối đe dọa nội bộ của Amazon
+- Bảo vệ chống lại các tác nhân độc hại khám phá lỗ hổng ứng dụng
 
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
+### 2. Hạn chế truy cập vào amplifyapp.com
 
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
+- Hạn chế truy cập vào domain amplifyapp.com mặc định được tạo bởi Amplify
+- Hữu ích khi bạn thêm domain tùy chỉnh
+- Ngăn bot và công cụ tìm kiếm thu thập thông tin domain
 
----
+### 3. Bảo vệ địa chỉ IP
 
-## Front door microservice
+- Hạn chế lưu lượng web bằng cách cho phép hoặc chặn yêu cầu từ các dải IP được chỉ định
 
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
+### 4. Bảo vệ địa lý
 
----
+- Hạn chế truy cập dựa trên các quốc gia cụ thể
 
-## Staging ER7 microservice
+## Cách thiết lập
 
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
+Thiết lập bảo vệ AWS WAF cho ứng dụng Amplify của bạn rất đơn giản:
 
----
+1. Từ bảng điều khiển Amplify, điều hướng đến cài đặt ứng dụng
+2. Chọn tab Firewall
+3. Chọn các quy tắc được xác định trước mà bạn muốn áp dụng
 
-## Tính năng mới trong giải pháp
+### Tạo Web Access Control List (ACL)
 
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Các biện pháp bảo vệ được kích hoạt thông qua bảng điều khiển Amplify sẽ tạo một Web Access Control List (ACL) cơ bản trong tài khoản AWS của bạn.
+
+**Đối với các bộ quy tắc chi tiết hơn:** Sử dụng trình tạo quy tắc trong bảng điều khiển AWS WAF.
+
+### Thời gian kích hoạt
+
+Sau vài phút, các quy tắc sẽ được liên kết với ứng dụng của bạn và AWS WAF sẽ bắt đầu chặn các yêu cầu đáng ngờ.
+
+## Kiểm tra AWS WAF hoạt động
+
+### Cách mô phỏng một cuộc tấn công
+
+Bạn có thể mô phỏng một cuộc tấn công và giám sát nó bằng chức năng yêu cầu kiểm tra của AWS WAF.
+
+**Ví dụ:** Gửi yêu cầu với giá trị header User-Agent trống → Điều này sẽ kích hoạt quy tắc chặn trong AWS WAF.
+
+#### Bước 1: Gửi yêu cầu hợp lệ
+
+Đầu tiên, gửi một yêu cầu hợp lệ đến ứng dụng của bạn.
+
+**Kết quả:** Máy chủ trả về phản hồi HTTP 200 (OK)
+
+#### Bước 2: Gửi yêu cầu không hợp lệ
+
+Sau đó, gửi yêu cầu không có giá trị nào liên kết với header HTTP User-Agent.
+
+**Kết quả:** Máy chủ trả về phản hồi HTTP 403 (Forbidden)
+
+## Giám sát và tối ưu hóa
+
+AWS WAF cung cấp khả năng hiển thị các mẫu yêu cầu, giúp bạn:
+
+- Tinh chỉnh cài đặt bảo mật theo thời gian
+- Phân tích xu hướng lưu lượng
+- Cải thiện quy tắc bảo mật khi cần thiết
+
+Bạn có thể truy cập nhật ký thông qua:
+
+- Bảng điều khiển Amplify Hosting, hoặc
+- Bảng điều khiển AWS WAF
+
+## Tính khả dụng
+
+- Có sẵn trong tất cả các vùng AWS nơi Amplify Hosting hoạt động
+- Tích hợp này là một phần của tài nguyên toàn cầu của AWS WAF (tương tự như Amazon CloudFront)
+- **Lưu ý:** Web ACL có thể được gắn vào nhiều ứng dụng Amplify Hosting, nhưng chúng phải ở cùng một vùng
+
+## Mô hình giá cả
+
+Giá cả cho tích hợp này tuân theo mô hình giá cả AWS WAF tiêu chuẩn:
+
+### Chi phí AWS WAF:
+
+Bạn trả tiền cho các tài nguyên AWS WAF mà bạn sử dụng dựa trên:
+
+- Số lượng ACL
+- Số lượng quy tắc
+- Số lượng yêu cầu web
+
+### Chi phí bổ sung từ AWS Amplify:
+
+- **$15/tháng** khi bạn gắn tường lửa ứng dụng web vào ứng dụng của mình
+- Chi phí này được tính theo giờ
+
+## Lợi ích chính
+
+Tính năng mới này mang các tính năng bảo mật cấp doanh nghiệp đến tất cả khách hàng Amplify Hosting, từ:
+
+- Các nhà phát triển cá nhân
+- Đến các doanh nghiệp lớn
+
+Bây giờ bạn có thể:
+
+- Xây dựng ứng dụng web
+- Lưu trữ ứng dụng web
+- Bảo vệ ứng dụng web
+
+Tất cả trong cùng một dịch vụ, giảm:
+
+- Độ phức tạp kiến trúc
+- Chi phí quản lý bảo mật
+
+## Kết luận
+
+Tích hợp AWS WAF với Amplify Hosting là một bước tiến quan trọng trong việc đơn giản hóa bảo mật ứng dụng web. Với khả năng thiết lập các biện pháp bảo vệ mạnh mẽ chỉ bằng một cú nhấp chuột, các nhà phát triển có thể tập trung vào việc xây dựng ứng dụng của họ mà không phải lo lắng về độ phức tạp của bảo mật.
+
+## Tài liệu tham khảo và tìm hiểu thêm
+
+- [Tài liệu tích hợp AWS WAF cho Amplify](https://docs.aws.amazon.com/amplify/)
+- [Thử trực tiếp trong bảng điều khiển Amplify](https://console.aws.amazon.com/amplify/)
+- [Tài liệu AWS WAF](https://docs.aws.amazon.com/waf/)
+
+## Về tác giả: Sébastien Stormacq
+
+Seb đã viết code từ khi lần đầu tiên chạm vào Commodore 64 vào giữa những năm tám mươi. Anh ấy truyền cảm hứng cho các nhà phát triển khai thác sức mạnh của AWS Cloud, sử dụng sự kết hợp bí mật của:
+
+- Đam mê
+- Nhiệt tình
+- Ủng hộ khách hàng
+- Tò mò
+- Sáng tạo
+
+Sở thích của anh ấy: Kiến trúc phần mềm, công cụ phát triển và điện toán di động.
+
+**Mẹo chuyên nghiệp:** Nếu bạn muốn bán cho anh ấy thứ gì đó, hãy đảm bảo nó có API.
+
+Theo dõi @sebsto trên: Bluesky, X, Mastodon và hơn thế nữa.

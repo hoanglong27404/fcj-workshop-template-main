@@ -1,18 +1,24 @@
 ---
-title : "Access S3 from VPC"
+title : "Deploy Backend"
 date: 2025-10-13
 weight : 3
 chapter : false
 pre : " <b> 5.3. </b> "
 ---
 
-#### Using Gateway endpoint
+## Introduction to Infrastructure as Code (IaC)
 
-In this section, you will create **a Gateway eendpoint** to access **Amazon S3** from **an EC2 instance**. **The Gateway endpoint** will allow upload an object to S3 buckets without using **the Public Internet**. To create an endpoint, you must specify the VPC in which you want to create the endpoint, and the service (in this case, S3) to which you want to establish the connection.
+Instead of manually clicking through the AWS Console ("ClickOps"), we use **AWS CDK** to define our entire infrastructure. In the file `cdk/lib/backend-stack.ts`, we have designed a complete Serverless system.
 
-![overview](/images/5-Workshop/5.3-S3-vpc/diagram2.png)
+When you run the `cdk deploy` command, CDK synthesizes this code into a CloudFormation Template, and AWS automatically provisions the corresponding resources.
 
-#### Content
+## Architecture
 
-- [Create gateway endpoint](3.1-create-gwe/)
-- [Test gateway endpoint](3.2-test-gwe/)
+![FindNest Architecture](/images/5-Workshop/5.1-Workshop-overview/AWSProject.png)
+
+## Content
+
+1. [Architecture Deep Dive](5.3.1-architecture/) - Detailed code walkthrough of all AWS resources
+2. [Install Dependencies](5.3.2-dependencies/) - Setting up the development environment
+3. [Deploy Stack](5.3.3-deploy/) - Running CDK commands to provision infrastructure
+4. [Results & Outputs](5.3.4-results/) - Understanding deployment outputs and next steps

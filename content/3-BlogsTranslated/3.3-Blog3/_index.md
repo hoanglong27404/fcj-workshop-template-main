@@ -1,126 +1,373 @@
 ---
-title: "Blog 3"
+title: "From Virtual Machines to Kubernetes to Serverless"
 date: 2025-10-13
-weight: 1
+weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# From Virtual Machines to Kubernetes to Serverless: How Dacadoo Saved 78% on Cloud Costs
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+**Authors:** Andreas Gehrig, Kevin Nash, Philippe Wanner  
+**Published:** March 26, 2025  
+**Categories:** Amazon API Gateway, Amazon DynamoDB, Amazon Route 53, Amazon Simple Storage Service (S3), Architecture, AWS Cloud Financial Management, AWS Lambda, AWS WAF, Migration, Serverless, Thought Leadership
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+## Introduction
 
----
+Dacadoo is a global technology company headquartered in Switzerland, specializing in solutions for:
 
-## Architecture Guidance
+- **Digital health interaction**
+- **Health risk quantification**
 
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
+Their products include a SaaS platform based on:
 
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
+- **Behavioral science**
+- **Artificial Intelligence (AI)**
+- **Gamification**
 
-**The solution architecture is now as follows:**
+To help end users improve their health outcomes.
 
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+## The Modernization Journey
 
----
+The company initiated an API modernization journey to:
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+- Quantify health and lifestyle data
+- Provide risk assessment tools
+- Calculate probability of mortality and morbidity based on scientific research data
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+To transform VM-based API services into a global health score and risk calculation solution with disaster recovery, dacadoo chose Amazon Web Services (AWS).
 
----
+## Results Achieved
 
-## Technology Choices and Communication Scope
+The outcome:
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+* **78% cost reduction**  
+* **Infrastructure maintenance time under 1 hour/year**  
+* **Deploy multiple AWS infrastructures without expanding the SRE team**  
+* **High automation levels and agile mindset**
 
----
+## Context: Three Evolutionary Stages
 
-## The Pub/Sub Hub
+The solution architecture evolved through three stages:
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
+**Stage 1:** Incubation with Virtual Machines  
+- Single virtual machine on-premises with disaster recovery (DR) in Switzerland
 
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+**Stage 2:** Global and Scalable  
+- Multiple Kubernetes clusters globally
 
----
+**Stage 3:** Operational Excellence  
+- Fully serverless with geographic redundancy on AWS
 
-## Core Microservice
+## Stage 1: Incubation with Virtual Machines
 
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
+### Initial Architecture
 
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+After years of scientific research and development, the service launched, running on:
 
----
+- A single on-premises virtual machine
+- Using hypervisor technology to provide disaster recovery (DR) capabilities
 
-## Front Door Microservice
+The application served:
+- API requests
+- NoSQL databases
+- All running on the same server
 
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+### Challenges
 
----
+| Issue | Details |
+|-------|---------|
+| High availability | No HA, manual recovery required |
+| Software deployment | Manual via SSH |
+| OS maintenance | Manual process |
+| Automation level | Very low |
+| Data backup | VM snapshots only |
+| Monitoring | Manual, no automation |
+| Testing | Developer workstation only |
 
-## Staging ER7 Microservice
+### Key Limitations
 
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+- API available only in Switzerland
+- Maintenance performed manually
+- Software deployment handled manually
+- No global scalability
+- Personnel management issues
 
----
+## Stage 2: Global and Scalable with Kubernetes
 
-## New Features in the Solution
+### Strategic Decision
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Dacadoo made a strategic investment decision in:
+
+- **Kubernetes** to manage containerized workloads
+- **Global management** at scale
+
+### Global Deployment
+
+Due to geographically distributed customers and low-latency requirements:
+
+**Three Kubernetes clusters deployed:**
+- Each in a different continent
+- NoSQL databases stored near workloads
+- Reduced service latency and migration effort
+
+### Operations Optimization
+
+**NoSQL Databases:**
+- Integrated as SaaS service
+- Minimized operational maintenance
+
+**Monitoring:**
+- Centralized with Datadog
+
+**Infrastructure Provisioning:**
+- Exclusively with Terraform
+- Includes: Kubernetes clusters, NoSQL databases, GitLab & Datadog integration
+
+**CI/CD:**
+- Using GitLab CI/CD
+- Deploy to multiple environments and clusters
+- Planetary-scale super system
+
+### Comparison: VM vs Kubernetes
+
+| Criteria | Virtual Machine | Kubernetes |
+|----------|----------------|------------|
+| Scalability | Low | High |
+| Availability | Best effort | 99.95% |
+| Infrastructure cost | Low | High |
+| Maintenance effort | High | Medium |
+
+### Challenges
+
+**High Costs:**
+- Three regional Kubernetes clusters
+- Three environments
+- Total: 27 cluster nodes
+
+**Additional Costs:**
+- Managing NoSQL SaaS database instances for each cluster
+
+**Complexity:**
+- Multi-cluster multi-environment CI/CD processes
+- Significant operational effort to maintain infrastructure
+- Need for continuous updates to Kubernetes components
+
+## Stage 3: Operational Excellence with Serverless
+
+### Why Move to Serverless?
+
+The Kubernetes-based architecture met requirements, but:
+
+- Some API backlog features needed better alignment
+- Architecture needed alignment with latest technology
+- Need to optimize best practices
+
+This was the right time to:
+- Take a holistic view of infrastructure and software architecture
+- Refactor the solution with AWS's latest technology
+
+### Solution Requirements
+
+Requirements for the refactoring:
+
+* **Maintain API functionality**
+
+* **Restrict data processing to selected regions** (comply with local data protection laws)
+
+* **Avoid weekly patching cycles** - use only managed serverless services
+
+* **Reduce costs** - choose services with pay-as-you-go pricing
+
+* **Delegate authentication to dedicated service**
+
+* **Use established web framework with broad ecosystem**
+
+### Application Refactoring
+
+**API service comprises:**
+- Developer Portal (Developer Portal)
+- Health score and risk calculation API
+
+**Database only needs:**
+- API keys
+- Algorithm parameters
+- Quotas
+- Usage statistics
+
+### Distributed Database
+
+**Health Data:**
+- Processed by region by compute layer
+- NOT stored (only temporary processing)
+- Opens opportunity for distributed database
+
+**Amazon DynamoDB Global Tables:**
+- Perfect choice for this solution
+- Writes: Distributed to all connected regions
+- Reads: Performed locally
+- Low latency - meets Dacadoo's SLAs
+
+### Architecture Components
+
+**Developer Portal:**
+- Web user interface
+- API documentation
+- API key management
+- AWS Lambda - auto-scaling, pay-per-request
+
+**Health and Risk API:**
+- Algorithms implemented in C (short simulations)
+- Requires compute-intensive calculations
+- REST API wrapped in Python FastAPI
+- AWS Lambda - excellent choice
+
+## Serverless Architecture in Detail
+
+### Request Flow
+
+**HTTP Requests:**
+- Routed via Amazon API Gateway
+- Protected by AWS WAF (against malicious requests)
+- Forwarded to AWS Lambda functions
+
+**Static Resources:**
+- Served from Amazon S3
+- Via API Gateway
+- CloudFront not required (reduces complexity)
+
+### Global DNS Routing
+
+**Amazon Route 53 - Latency-based Routing:**
+- Redirects DNS queries to the lowest-latency endpoint
+- Provides regional HA for API users
+- Doesn't require specific data processing location
+- Users can call region-specific endpoints (if regulatory compliance needed)
+
+### Authentication and Authorization
+
+**API Authorization:**
+- Based on HTTP headers
+- Implemented in the application
+- Data stored in Amazon DynamoDB
+
+## Infrastructure as Code with Pulumi
+
+### Tool Selection
+
+The SRE team proficient in Python, selected Pulumi:
+
+**Advantages:**
+
+* **Programming language control flow** - language programming  
+* **Powerful configuration capabilities**  
+* **Multi-cloud support**
+
+### CI/CD Pipeline
+
+**GitLab CI:**
+- Compile algorithm library
+- Test FastAPI applications
+- Package everything
+
+**Deployment:**
+- Just an AWS Lambda update
+- Simple and reliable workflow
+
+### Skill Enhancement
+
+**Transformation:**
+- From configuration-based approach
+- To infrastructure code base design
+- Using Python object-oriented programming
+
+**Results:**
+- SRE develop software engineering skills
+- Investment in team modernization
+- GitOps culture focused on productivity
+
+## Comprehensive Comparison
+
+| Criteria | Virtual Machine | Kubernetes | Serverless |
+|----------|----------------|------------|------------|
+| Scalability | Low | High | Very High |
+| Availability | Best effort | 99.95% | 99.999%* |
+| Infrastructure cost | Low | High | Low |
+| Maintenance effort | High | Medium | Very Low |
+
+*With global redundancy elevating availability to 99.999% while keeping costs low.
+
+## Final Results
+
+### Cost & Performance
+
+* **78% cost reduction**
+
+* **Maintenance time under 1 hour/year**
+
+* **99.999% global availability**
+
+* **Complete automation**
+
+### Strategic Benefits
+
+* **Deploy multiple AWS infrastructures without expanding SRE team**
+
+* **Simplify infrastructure management complexity**
+
+* **Enhance flexibility and automation**
+
+* **Maintain lean SRE team**
+
+* **Keep infrastructure costs competitive**
+
+## Conclusion
+
+Migration from virtual machines → Kubernetes → AWS Lambda demonstrates:
+
+**Evolution of cloud engineering toward:**
+
+📈 **Efficiency**  
+📈 **Enhanced scalability**
+
+**Each step in the journey:**
+
+⬇️ **Minimizes infrastructure management complexity**  
+⬆️ **Enhances flexibility and automation**
+
+**Results for Dacadoo:**
+
+✨ **Powerful platform growth**  
+✨ **Enhanced skills for engineers**  
+✨ **Maintained lean SRE team**  
+✨ **Competitive cost structure**
+
+### Get Started
+
+Start with your own AWS serverless solution!
+
+## About the Authors
+
+### Andreas Gehrig
+**Position:** Senior Cloud Architect at Dacadoo, Zurich, Switzerland
+
+**Background:** Software engineering
+
+**Expertise:** Leveraging AWS technology to design and build cloud-native solutions for applications and analytics
+
+### Kevin Nash
+**Position:** Senior Solutions Architect at Amazon Web Services (AWS), Switzerland
+
+**Background:** Distributed systems
+
+**Expertise:** Building solutions for customers, supporting customer cloud migration
+
+### Philippe Wanner
+**Position:** Senior Expert Solutions Architect at AWS
+
+**Expertise:** Promoting optimization methods for migration and modernization
+
+**Current Focus:** Multi-disciplinary areas encompassing:
+- Distributed systems
+- Serverless architecture
+- Business transformation

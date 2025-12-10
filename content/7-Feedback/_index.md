@@ -1,47 +1,38 @@
 ---
-title: "Sharing and Feedback"
+title: "Self-Assessment"
 date: 2025-10-13
-weight: 7
+weight: 6
 chapter: false
-pre: " <b> 7. </b> "
+pre: " <b> 6. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
+During my internship at Amazon Web Services Vietnam Co., Ltd. from September 8, 2025 to December 12, 2025, I had the opportunity to learn, practice, and apply the knowledge acquired in school to a real-world working environment.
 
-> Here, you can freely share your personal opinions about your experience participating in the First Cloud Journey program. This will help the FCJ team improve any shortcomings based on the following aspects:
+I participated in learning about AWS services, through which I improved my skills in cloud computing, AWS services architecture, serverless technologies, cloud infrastructure management, and expanded my understanding of cloud technologies and best practices.
 
-### Overall Evaluation
+In terms of work ethic, I always strived to complete tasks well, complied with workplace regulations, and actively engaged with colleagues to improve work efficiency.
 
-**1. Working Environment**  
-The working environment is very friendly and open. FCJ members are always willing to help whenever I encounter difficulties, even outside working hours. The workspace is tidy and comfortable, helping me focus better. However, I think it would be nice to have more social gatherings or team bonding activities to strengthen relationships.
+To objectively reflect on my internship period, I would like to evaluate myself based on the following criteria:
 
-**2. Support from Mentor / Team Admin**  
-The mentor provides very detailed guidance, explains clearly when I don’t understand, and always encourages me to ask questions. The admin team supports administrative tasks, provides necessary documents, and creates favorable conditions for me to work effectively. I especially appreciate that the mentor allows me to try and solve problems myself instead of just giving the answer.
+| No. | Criteria | Description | Good | Fair | Average |
+|-----|----------|-------------|------|------|---------|
+| 1 | Professional knowledge & skills | Understanding of the field, applying knowledge in practice, proficiency with tools, work quality | * | ☐ | ☐ |
+| 2 | Ability to learn | Ability to absorb new knowledge and learn quickly | * | ☐ | ☐ |
+| 3 | Proactiveness | Taking initiative, seeking out tasks without waiting for instructions | ☐ | * | ☐ |
+| 4 | Sense of responsibility | Completing tasks on time and ensuring quality | ☐ | * | ☐ |
+| 5 | Discipline | Adhering to schedules, rules, and work processes | ☐ | * | ☐ |
+| 6 | Progressive mindset | Willingness to receive feedback and improve oneself | ☐ | * | ☐ |
+| 7 | Communication | Presenting ideas and reporting work clearly | ☐ | ☐ | * |
+| 8 | Teamwork | Working effectively with colleagues and participating in teams | ☐ | * | ☐ |
+| 9 | Professional conduct | Respecting colleagues, partners, and the work environment | ☐ | * | ☐ |
+| 10 | Problem-solving skills | Identifying problems, proposing solutions, and showing creativity | ☐ | ☐ | * |
+| 11 | Contribution to project/team | Work effectiveness, innovative ideas, recognition from the team | ☐ | ☐ | * |
+| 12 | Overall | General evaluation of the entire internship period | ☐ | * | ☐ |
 
-**3. Relevance of Work to Academic Major**  
-The tasks I was assigned align well with the knowledge I learned at university, while also introducing me to new areas I had never encountered before. This allowed me to both strengthen my foundational knowledge and gain practical skills.
+## Needs Improvement
 
-**4. Learning & Skill Development Opportunities**  
-During the internship, I learned many new skills such as using project management tools, teamwork skills, and professional communication in a corporate environment. The mentor also shared valuable real-world experiences that helped me better plan my career path.
+**Communication skills**: Need to improve presentation abilities, reporting work more clearly, and expressing ideas more effectively in both daily interactions and professional contexts
 
-**5. Company Culture & Team Spirit**  
-The company culture is very positive: everyone respects each other, works seriously but still keeps things enjoyable. When there are urgent projects, everyone works together and supports one another regardless of their position. This made me feel like a real part of the team, even as an intern.
+**Problem-solving thinking**: Should enhance analytical skills, strengthen the ability to identify problems quickly, propose innovative solutions, and think more creatively when facing challenges
 
-**6. Internship Policies / Benefits**  
-The company provides an internship allowance and offers flexible working hours when needed. In addition, having the opportunity to join internal training sessions is a big plus.
-
----
-
-### Additional Questions
-- What did you find **most satisfying** during your internship?  
-- What do you think the company **should improve** for future interns?  
-- If recommending to a friend, would you **suggest they intern here**? Why or why not?  
-
----
-
-### Suggestions & Expectations
-- Do you have any suggestions to improve the internship experience?  
-- Would you like to continue this program in the future?  
-- Any other comments (free sharing):
+**Contribution to projects**: Need to increase work effectiveness, bring more improvement initiatives, and actively contribute valuable ideas to the team and organization

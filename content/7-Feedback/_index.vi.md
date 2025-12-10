@@ -1,44 +1,38 @@
 ---
-title: "Chia sẻ, đóng góp ý kiến"
+title: "Tự Đánh Giá"
 date: 2025-10-13
-weight: 7
+weight: 6
 chapter: false
-pre: " <b> 7. </b> "
+pre: " <b> 6. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
->Tại đây bạn có thể tự do đóng góp ý kiến cá nhân về những trải nghiệm khi tham gia chương trình First Cloud Journey, giúp team FCJ cải thiện những vấn đề còn thiếu sót dựa trên các hạng mục sau:
+Trong thời gian thực tập tại Công ty TNHH Amazon Web Services Việt Nam từ ngày 8 tháng 9 năm 2025 đến ngày 12 tháng 12 năm 2025, tôi đã có cơ hội học hỏi, thực hành và áp dụng những kiến thức đã học ở trường vào môi trường làm việc thực tế.
 
-### Đánh giá chung
+Tôi đã tham gia học tập về các dịch vụ AWS, qua đó cải thiện kỹ năng về điện toán đám mây, kiến trúc dịch vụ AWS, công nghệ serverless, quản lý hạ tầng đám mây, và mở rộng hiểu biết về công nghệ đám mây và các phương pháp hay nhất.
 
-**1. Môi trường làm việc**  
-Môi trường làm việc rất thân thiện và cởi mở. Các thành viên trong FCJ luôn sẵn sàng hỗ trợ khi mình gặp khó khăn, kể cả ngoài giờ làm việc. Không gian làm việc gọn gàng, thoải mái, giúp mình tập trung tốt hơn. Tuy nhiên, mình nghĩ có thể bổ sung thêm một số buổi giao lưu hoặc team bonding để mọi người hiểu nhau hơn.
+Về thái độ làm việc, tôi luôn cố gắng hoàn thành tốt các nhiệm vụ được giao, tuân thủ các quy định của nơi làm việc và tích cực tương tác với đồng nghiệp để nâng cao hiệu quả công việc.
 
-**2. Sự hỗ trợ của mentor / team admin**  
-Mentor hướng dẫn rất chi tiết, giải thích rõ ràng khi mình chưa hiểu và luôn khuyến khích mình đặt câu hỏi. Team admin hỗ trợ các thủ tục, tài liệu và tạo điều kiện để mình làm việc thuận lợi. Mình đánh giá cao việc mentor cho phép mình thử và tự xử lý vấn đề thay vì chỉ đưa đáp án.
+Để phản ánh khách quan về thời gian thực tập của mình, tôi xin được tự đánh giá dựa trên các tiêu chí sau:
 
-**3. Sự phù hợp giữa công việc và chuyên ngành học**  
-Công việc mình được giao phù hợp với kiến thức mình đã học ở trường, đồng thời mở rộng thêm những mảng mới mà mình chưa từng được tiếp cận. Nhờ vậy, mình vừa củng cố kiến thức nền tảng, vừa học thêm kỹ năng thực tế.
+| STT | Tiêu chí | Mô tả | Tốt | Khá | Trung bình |
+|-----|----------|-------|-----|-----|------------|
+| 1 | Kiến thức & kỹ năng chuyên môn | Hiểu biết về lĩnh vực, áp dụng kiến thức vào thực tế, thành thạo công cụ, chất lượng công việc | * | ☐ | ☐ |
+| 2 | Khả năng học hỏi | Khả năng tiếp thu kiến thức mới và học nhanh | * | ☐ | ☐ |
+| 3 | Tính chủ động | Chủ động, tìm kiếm công việc mà không chờ chỉ đạo | ☐ | * | ☐ |
+| 4 | Tinh thần trách nhiệm | Hoàn thành công việc đúng thời hạn và đảm bảo chất lượng | ☐ | * | ☐ |
+| 5 | Tính kỷ luật | Tuân thủ lịch trình, quy tắc và quy trình làm việc | ☐ | * | ☐ |
+| 6 | Tinh thần tiến bộ | Sẵn sàng nhận phản hồi và cải thiện bản thân | ☐ | * | ☐ |
+| 7 | Giao tiếp | Trình bày ý tưởng và báo cáo công việc rõ ràng | ☐ | ☐ | * |
+| 8 | Làm việc nhóm | Làm việc hiệu quả với đồng nghiệp và tham gia nhóm | ☐ | * | ☐ |
+| 9 | Thái độ nghề nghiệp | Tôn trọng đồng nghiệp, đối tác và môi trường làm việc | ☐ | * | ☐ |
+| 10 | Kỹ năng giải quyết vấn đề | Xác định vấn đề, đề xuất giải pháp và thể hiện sự sáng tạo | ☐ | ☐ | * |
+| 11 | Đóng góp cho dự án/nhóm | Hiệu quả công việc, ý tưởng sáng tạo, sự công nhận từ nhóm | ☐ | ☐ | * |
+| 12 | Tổng thể | Đánh giá chung về toàn bộ thời gian thực tập | ☐ | * | ☐ |
 
-**4. Cơ hội học hỏi & phát triển kỹ năng**  
-Trong quá trình thực tập, mình học được nhiều kỹ năng mới như sử dụng công cụ quản lý dự án, kỹ năng làm việc nhóm, và cả cách giao tiếp chuyên nghiệp trong môi trường công ty. Mentor cũng chia sẻ nhiều kinh nghiệm thực tế giúp mình định hướng tốt hơn cho sự nghiệp.
+## Cần Cải thiện
 
-**5. Văn hóa & tinh thần đồng đội**  
-Văn hóa công ty rất tích cực: mọi người tôn trọng lẫn nhau, làm việc nghiêm túc nhưng vẫn vui vẻ. Khi có dự án gấp, mọi người cùng nhau cố gắng, hỗ trợ không phân biệt vị trí. Điều này giúp mình cảm thấy mình là một phần của tập thể, dù chỉ là thực tập sinh.
+**Kỹ năng giao tiếp**: Cần cải thiện khả năng thuyết trình, báo cáo công việc rõ ràng hơn và diễn đạt ý tưởng hiệu quả hơn trong cả tương tác hàng ngày và bối cảnh chuyên nghiệp
 
-**6. Chính sách / phúc lợi cho thực tập sinh**  
-Công ty có hỗ trợ phụ cấp thực tập và tạo điều kiện về thời gian linh hoạt khi cần thiết. Ngoài ra, việc được tham gia các buổi đào tạo nội bộ là một điểm cộng lớn.
+**Tư duy giải quyết vấn đề**: Nên nâng cao kỹ năng phân tích, tăng cường khả năng xác định vấn đề nhanh chóng, đề xuất giải pháp sáng tạo và tư duy sáng tạo hơn khi đối mặt với thử thách
 
-
-### Một số câu hỏi khác
-- Điều bạn **hài lòng nhất** trong thời gian thực tập?  
-- Điều bạn nghĩ công ty **cần cải thiện** cho các thực tập sinh sau?  
-- Nếu giới thiệu cho bạn bè, bạn có **khuyên họ thực tập ở đây không**? Vì sao?  
-
-
-### Đề xuất & mong muốn
-- Bạn có đề xuất gì để cải thiện trải nghiệm trong kỳ thực tập?  
-- Bạn có muốn tiếp tục chương trình này trong tương lai?
-- Góp ý khác (tự do chia sẻ):
+**Đóng góp cho dự án**: Cần tăng hiệu quả công việc, mang lại nhiều sáng kiến cải tiến hơn và tích cực đóng góp ý tưởng có giá trị cho nhóm và tổ chức

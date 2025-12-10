@@ -1,18 +1,24 @@
 ---
-title : "Truy cập S3 từ VPC"
+title : "Deploy Backend"
 date: 2025-10-13
 weight : 3
 chapter : false
 pre : " <b> 5.3. </b> "
 ---
 
-#### Sử dụng Gateway endpoint
+## Giới thiệu về Infrastructure as Code (IaC)
 
-Trong phần này, bạn sẽ tạo một Gateway endpoint để truy cập Amazon S3 từ một EC2 instance. Gateway endpoint sẽ cho phép tải một object lên S3 bucket mà không cần sử dụng Internet Công cộng. Để tạo endpoint, bạn phải chỉ định VPC mà bạn muốn tạo endpoint và dịch vụ (trong trường hợp này là S3) mà bạn muốn thiết lập kết nối.
+Thay vì nhấp chuột thủ công qua AWS Console ("ClickOps"), chúng ta sử dụng **AWS CDK** để định nghĩa toàn bộ infrastructure. Trong file `cdk/lib/backend-stack.ts`, chúng ta đã thiết kế một hệ thống Serverless hoàn chỉnh.
 
-![overview](/images/5-Workshop/5.3-S3-vpc/diagram2.png)
+Khi bạn chạy lệnh `cdk deploy`, CDK synthesize mã này thành CloudFormation Template, và AWS tự động cung cấp các tài nguyên tương ứng.
 
-#### Nội dung
+## Kiến trúc
 
-- [Tạo gateway endpoint](3.1-create-gwe/)
-- [Test gateway endpoint](3.2-test-gwe/)
+![FindNest Architecture](/images/5-Workshop/5.1-Workshop-overview/AWSProject.png)
+
+## Nội dung
+
+1. [Phân Tích Kiến Trúc Chi Tiết](5.3.1-architecture/) - Hướng dẫn mã chi tiết của tất cả tài nguyên AWS
+2. [Cài Đặt Dependencies](5.3.2-dependencies/) - Thiết lập môi trường phát triển
+3. [Deploy Stack](5.3.3-deploy/) - Chạy lệnh CDK để cung cấp infrastructure
+4. [Kết Quả & Outputs](5.3.4-results/) - Hiểu deployment outputs và các bước tiếp theo

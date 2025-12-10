@@ -6,39 +6,64 @@ chapter: false
 pre: " <b> 4. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** for your report, including this warning.
-{{% /notice %}}
+# Events Participated
 
-> In this section, you should list and describe in detail the events you have participated in during your internship or work experience.  
-> 
-> Each event should be presented in the format Event 1, Event 2, Event 3…, along with the following details:
-> * Event name
-> * Date and time
-> * Location (if applicable)
-> * Your role in the event (attendee, event support, speaker, etc.)
-> * A brief description of the event’s content and main activities
-> * Outcomes or value gained (lessons learned, new skills, contribution to the team/project)
-> * This listing helps demonstrate your actual participation as well as the soft skills and experience you have gained from each event.
+## AI-Driven Development Life Cycle (AI-DLC)
 
-During my internship, I participated in two events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
+**Date & Time:** 3/10/2025  
+**Location:** AWS Vietnam Office (HCM)  
+**Role:** Attendee
 
-### [Event 1](4.1-Event1/)  
-&emsp;**Event Name:** GenAI-powered App-DB Modernization workshop  
+**Summary:** Introduction to the AI-Driven Development Life Cycle, spec-driven development, and agentic tools like Amazon Q Developer and Kiro. Focus on shifting developer roles to architect & validator and automating repetitive tasks.
 
-&emsp;**Date & Time:** 09:00, August 13, 2025  
-
-&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
-
-&emsp;**Role:** Attendee  
+**Outcomes:** Learned practical workflows for AI-assisted development, prompt-as-code practices, and how to integrate AI agents into the SDLC.
 
 ---
 
-### [Event 2](4.2-Event2/)  
-&emsp;**Event Name:** GenAI-powered App-DB Modernization workshop  
+## AI/ML/GenAI on AWS Workshop
 
-&emsp;**Date & Time:** 09:00, August 13, 2025  
+**Date & Time:** Saturday, November 15, 2025 — 8:30 AM – 12:00 PM  
+**Location:** AWS Vietnam Office (HCM)  
+**Role:** Attendee
 
-&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+**Summary:** Overview of AWS AI services (Rekognition, Polly, Transcribe, Comprehend, Translate, Lex) and generative-AI topics with Bedrock (foundation models, prompt engineering, RAG, agents, and guardrails).
 
-&emsp;**Role:** Attendee  
+**Outcomes:** Gained knowledge on building GenAI chatbots with Bedrock, RAG architectures, and AI safety best practices.
+
+---
+
+## DevOps on AWS Training Session
+
+**Date & Time:** Monday, November 17, 2025 — 8:30 AM – 5:00 PM  
+**Location:** AWS Vietnam Office (HCM)  
+**Role:** Attendee
+
+**Summary:** Hands-on coverage of CI/CD (CodePipeline, CodeBuild, CodeDeploy), Infrastructure as Code (CloudFormation, CDK), container services (ECR, ECS, EKS), and monitoring/observability (CloudWatch, X-Ray).
+
+**Outcomes:** Practical understanding of building CI/CD pipelines, deploying containers, and implementing observability for production systems.
+
+---
+
+## AWS Network Security & Architecture Workshop
+
+**Date & Time:** 29/11/2025  
+**Location:** AWS Vietnam Office (HCM)  
+**Role:** Attendee
+
+**Summary:** Deep dive into network security, MFA (TOTP vs FIDO2), layered defenses (WAF, Shield, Network Firewall), Transit Gateway design, and centralized egress strategies.
+
+**Outcomes:** Improved understanding of defense-in-depth, network segmentation, and architectural best practices for secure AWS networks.
+
+---
+
+### [Event 1 - AI-Driven Development Life Cycle](4.1-Event1/)
+Detailed coverage of the AI-DLC workshop including speakers, key highlights, tool demonstrations, and practical takeaways.
+
+### [Event 2 - AI/ML/GenAI on AWS Workshop](4.2-Event2/)
+Comprehensive overview of AWS AI services, Bedrock foundation models, and hands-on GenAI chatbot development.
+
+### [Event 3 - DevOps on AWS Training Session](4.3-Event3/)
+Full-day hands-on training covering CI/CD pipelines, Infrastructure as Code, container services, and monitoring best practices.
+
+### [Event 4 - AWS Network Security & Architecture Workshop](4.4-Event4/)
+Deep dive into network security, MFA technologies, defense-in-depth strategies, and secure AWS architecture design.
