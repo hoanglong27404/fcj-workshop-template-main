@@ -1,6 +1,7 @@
 baseURL = "https://hoanglong27404.github.io/fcj-workshop-template-main/"
 relativeURLs = true
 canonifyURLs = true
+staticDir = "static"
 
 # Change the default theme to be use when building the site with Hugo
 theme = "hugo-theme-learn"
